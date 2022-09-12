@@ -19,7 +19,7 @@ class Game:
             while True:
                 pad.timeout(10)
                 self.handle(stdscr.getch())
-                pad.refresh(self.y_offset, self.x_offset, 0, 0, 30, 70)
+                pad.refresh(self.y_offset, self.x_offset, 0, 0, curses.LINES-1, curses.COLS-1)
 
     def handle(self, key):
         match key:
