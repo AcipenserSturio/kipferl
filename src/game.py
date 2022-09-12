@@ -6,6 +6,7 @@ class Game:
     def __init__(self):
         self.x_offset = 0
         self.y_offset = 0
+        self.game_quit = False
 
     def init_palette(self):
         for bg in range(1, 256):
@@ -22,10 +23,10 @@ class Game:
             for num in range(256):
                 pad.addch("#", curses.color_pair(num) | curses.A_REVERSE)
 
-            while True:
+            while not self.game_quit:
+                pad.refresh(self.y_offset, self.x_offset, 0, 0, curses.LINES-1, curses.COLS-1)
                 pad.timeout(10)
                 self.handle(stdscr.getch())
-                pad.refresh(self.y_offset, self.x_offset, 0, 0, curses.LINES-1, curses.COLS-1)
 
     def handle(self, key):
         match key:
@@ -37,3 +38,5 @@ class Game:
                 self.y_offset += -1
             case curses.KEY_DOWN:
                 self.y_offset += 1
+            case 113: # q
+                self.game_quit = True
