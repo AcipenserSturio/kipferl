@@ -7,14 +7,20 @@ class Game:
         self.x_offset = 0
         self.y_offset = 0
 
+    def init_palette(self):
+        for bg in range(1, 256):
+            curses.init_pair(bg, curses.COLOR_BLACK, bg)
+
     def run(self):
         with CursesContextManager() as stdscr:
 
-            curses.init_pair(255, 255, 69)
+            self.init_palette()
 
-            pad = curses.newpad(300, 300)
-            pad.addstr("Test тест Ελληνικά",
-                    curses.color_pair(255))
+            pad = curses.newpad(33, 32)
+            for num in range(256):
+                pad.addch("#", curses.color_pair(num))
+            for num in range(256):
+                pad.addch("#", curses.color_pair(num) | curses.A_REVERSE)
 
             while True:
                 pad.timeout(10)
