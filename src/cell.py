@@ -8,6 +8,7 @@ class Cell:
         self.char = char
         self.y = y
         self.x = x
+        self.character = None
         self.init_qualities()
 
     def neighbor(self, direction):
@@ -39,10 +40,15 @@ class Cell:
                 self.walkable = True
                 self.character = None
             case "A":
-                self.color = 39
-                self.walkable = True
-                self.character = Character()
+                self.character = Character(self, self.char)
                 self.level.set_player(self.character)
+                self.char = "."
+                self.color = 85
+                self.walkable = True
+            case "\n":
+                self.char = "F"
+                self.color = 2
+                self.walkable = False
             case _:
                 self.color = 1
                 self.walkable = True
@@ -50,4 +56,9 @@ class Cell:
 
 
     def draw(self, window):
-        window.addch(self.char, curses.color_pair(self.color))
+        color = curses.color_pair(self.color)
+        char = self.character.char if self.character else " "
+        window.addch(char, color)
+
+    def redraw(self):
+        pass

@@ -3,10 +3,11 @@ from .cell import Cell
 class Level:
     def __init__(self):
         self.board = []
+        self.player = None
 
     def load(self, filepath):
         with open(filepath) as f:
-            self.raw_level = [line for line in f.readlines()]
+            self.raw_level = [line[:-1] for line in f.readlines()]
             self.lines = len(self.raw_level)
             self.cols = len(self.raw_level[0])
 
