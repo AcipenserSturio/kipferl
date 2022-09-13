@@ -19,7 +19,7 @@ class Game:
             self.init_palette()
 
             self.level = Level()
-            self.level.load("assets/levels/temp")
+            self.level.load("assets/levels/huge")
             self.level.build()
 
             pad = curses.newpad(self.level.lines, self.level.cols)
