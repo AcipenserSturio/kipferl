@@ -1,5 +1,6 @@
 import curses
 
+from .level import Level
 from .utils import CursesContextManager
 
 class Game:
@@ -17,11 +18,12 @@ class Game:
 
             self.init_palette()
 
-            pad = curses.newpad(33, 32)
-            for num in range(256):
-                pad.addch("#", curses.color_pair(num))
-            for num in range(256):
-                pad.addch("#", curses.color_pair(num) | curses.A_REVERSE)
+            self.level = Level()
+            self.level.load("assets/levels/temp")
+            self.level.build()
+
+            pad = curses.newpad(self.level.lines, self.level.cols)
+            self.level.draw(pad)
 
             while not self.game_quit:
                 pad.refresh(self.y_offset, self.x_offset, 0, 0, curses.LINES-1, curses.COLS-1)
