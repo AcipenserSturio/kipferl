@@ -20,6 +20,7 @@ class CursesContextManager:
         # However, there is no harm in doing it as early as possible.
         self.stdscr.clear()
         self.stdscr.refresh()
+        curses.curs_set(0)
         return self.stdscr
 
     def __exit__(self, ex_type, ex_value, ex_traceback):

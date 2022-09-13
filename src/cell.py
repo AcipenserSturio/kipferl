@@ -58,7 +58,8 @@ class Cell:
     def draw(self, window):
         color = curses.color_pair(self.color)
         char = self.character.char if self.character else " "
+        window.move(self.y, self.x)
         window.addch(char, color)
 
     def redraw(self):
-        pass
+        self.draw(self.level.display)

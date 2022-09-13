@@ -24,6 +24,7 @@ class Game:
 
             pad = curses.newpad(self.level.lines, self.level.cols)
             self.level.draw(pad)
+            self.level.display = pad
 
             while not self.game_quit:
                 pad.refresh(self.y_offset, self.x_offset, 0, 0, curses.LINES-1, curses.COLS-1)
@@ -33,12 +34,12 @@ class Game:
     def handle(self, key):
         match key:
             case curses.KEY_LEFT:
-                self.x_offset += -2
+                self.level.player.walk("l")
             case curses.KEY_RIGHT:
-                self.x_offset += 2
+                self.level.player.walk("r")
             case curses.KEY_UP:
-                self.y_offset += -1
+                self.level.player.walk("u")
             case curses.KEY_DOWN:
-                self.y_offset += 1
+                self.level.player.walk("d")
             case 113: # q
                 self.game_quit = True
