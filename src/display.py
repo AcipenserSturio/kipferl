@@ -1,10 +1,13 @@
 import curses
 
+from .sidebar import Sidebar
+
 class Display:
     def __init__(self, level, lines, cols):
+        self.sidebar = Sidebar()
         self.level = level
         self.lines = lines
-        self.cols = cols
+        self.cols = cols - self.sidebar.cols
         self.window = curses.newpad(self.level.lines, self.level.cols)
         self.draw()
         self.refresh()
@@ -31,6 +34,7 @@ class Display:
         y_offset = clamp(self.level.player.cell.y - self.lines // 2, 0, self.level.lines - self.lines)
         x_offset = clamp(self.level.player.cell.x - self.cols // 2, 0, self.level.cols - self.cols)
         self.window.refresh(y_offset, x_offset, 0, 0, self.lines, self.cols)
+        self.sidebar.refresh()
         self.window.timeout(10)
 
 
