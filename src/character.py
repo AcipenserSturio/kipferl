@@ -16,5 +16,8 @@ class Character:
                 origin.character = None
                 destination.character = self
 
+                origin.redraw()
+                destination.redraw()
+
                 self.cell = destination
                 self.facing = direction

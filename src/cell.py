@@ -53,3 +53,13 @@ class Cell:
                 self.color = 1
                 self.walkable = True
                 self.character = None
+
+
+    def draw(self, window):
+        color = curses.color_pair(self.color)
+        char = self.character.char if self.character else " "
+        window.move(self.y, self.x)
+        window.addch(char, color)
+
+    def redraw(self):
+        self.draw(self.level.display)

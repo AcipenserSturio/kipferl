@@ -31,3 +31,11 @@ class Level:
 
     def set_player(self, character):
         self.player = character
+
+    def draw(self, window):
+        for index, cell in enumerate(self.board):
+            y, x = self.coord(index)
+            # Edge case last character. todo: fix
+            if (y == self.lines-1) and (x == self.cols-1):
+                continue
+            cell.draw(window)
