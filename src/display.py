@@ -28,7 +28,15 @@ class Display:
 
     def refresh(self):
         self.update()
-        y_offset = self.level.player.cell.y - self.lines // 2
-        x_offset = self.level.player.cell.x - self.cols // 2
+        y_offset = clamp(self.level.player.cell.y - self.lines // 2, 0, self.level.lines - self.lines)
+        x_offset = clamp(self.level.player.cell.x - self.cols // 2, 0, self.level.cols - self.cols)
         self.window.refresh(y_offset, x_offset, 0, 0, self.lines, self.cols)
         self.window.timeout(10)
+
+
+def clamp(value, minimum, maximum):
+    if value < minimum:
+        return minimum
+    if value > maximum:
+        return maximum
+    return value
