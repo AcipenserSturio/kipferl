@@ -3,7 +3,11 @@ from .cell import Cell
 class Level:
     def __init__(self):
         self.board = []
+        self.ticked = set()
         self.player = None
+
+    def enemy_turn(self):
+        pass
 
     def load(self, filepath):
         with open(filepath) as f:
@@ -31,11 +35,3 @@ class Level:
 
     def set_player(self, character):
         self.player = character
-
-    def draw(self, window):
-        for index, cell in enumerate(self.board):
-            y, x = self.coord(index)
-            # Edge case last character. todo: fix
-            if (y == self.lines-1) and (x == self.cols-1):
-                continue
-            cell.draw(window)
