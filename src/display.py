@@ -28,7 +28,7 @@ class Display:
 
     def refresh(self):
         self.update()
-        y_offset = self.level.player.cell.y
-        x_offset = self.level.player.cell.x
+        y_offset = self.level.player.cell.y - self.lines // 2
+        x_offset = self.level.player.cell.x - self.cols // 2
         self.window.refresh(y_offset, x_offset, 0, 0, self.lines, self.cols)
         self.window.timeout(10)
