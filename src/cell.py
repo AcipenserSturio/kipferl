@@ -1,3 +1,5 @@
+import random
+
 from .character import Character
 from .drop import Drop
 
