@@ -1,4 +1,5 @@
 from .character import Character
+from .drop import Drop
 
 class Cell:
     def __init__(self, level, char, y, x):
@@ -7,6 +8,8 @@ class Cell:
         self.y = y
         self.x = x
         self.character = None
+        self.drop = None
+        self.walkable = False
         self.init_qualities()
 
     def neighbor(self, direction):
@@ -31,14 +34,13 @@ class Cell:
         match self.char:
             case "#":
                 self.color = 56
-                self.walkable = False
-                self.character = None
             case ".":
                 self.color = 85
                 self.walkable = True
-                self.character = None
+                if random.random() < 0.03:
+                    self.drop = Drop(self, "ꙮ")
             case "A":
-                self.character = Character(self, self.char)
+                self.character = Character(self, "ඞ")
                 self.level.set_player(self.character)
                 self.char = "."
                 self.color = 85
@@ -46,11 +48,15 @@ class Cell:
             case "\n":
                 self.char = "F"
                 self.color = 2
-                self.walkable = False
             case _:
                 self.color = 1
-                self.walkable = True
-                self.character = None
+
+    def drawn_char(self):
+        if self.character:
+            return self.character.char
+        if self.drop:
+            return self.drop.char
+        return " "
 
     def tick(self):
         self.level.ticked.add(self)

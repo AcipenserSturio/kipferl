@@ -25,7 +25,7 @@ class Display:
         if (cell.y == self.level.lines-1) and (cell.x == self.level.cols-1):
             return
         color = curses.color_pair(cell.color)
-        char = cell.character.char if cell.character else " "
+        char = cell.drawn_char()
         self.window.move(cell.y, cell.x)
         self.window.addch(char, color)
 
