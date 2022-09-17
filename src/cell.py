@@ -5,6 +5,8 @@ import curses
 from .character import Character
 from .drop import Drop
 
+ENEMIES = [chr(i+97) for i in range(26)]
+
 class Cell:
     def __init__(self, level, char, y, x):
         self.level = level
@@ -43,9 +45,11 @@ class Cell:
                 self.walkable = True
                 if random.random() < 0.03:
                     self.drop = Drop(self, curses.ACS_DIAMOND)
+                elif random.random() < 0.004:
+                    self.character = Character(self, random.choice(ENEMIES))
+                    self.level.enemies.add(self.character)
             case "A":
-                self.character = Character(self, "µ")
-                self.level.set_player(self.character)
+                self.character = Character(self, "µ", player=True)
                 self.char = "."
                 self.color = 229
                 self.walkable = True

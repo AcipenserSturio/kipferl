@@ -5,9 +5,11 @@ class Level:
         self.board = []
         self.ticked = set()
         self.player = None
+        self.enemies = set()
 
     def enemy_turn(self):
-        pass
+        for enemy in self.enemies:
+            enemy.wander()
 
     def load(self, filepath):
         with open(filepath) as f:

@@ -3,11 +3,14 @@ import random
 import curses
 
 class Character:
-    def __init__(self, cell, char):
+    def __init__(self, cell, char, player=False):
         self.cell = cell
         self.char = char
+        self.player = player
         self.coins = 0
         self.facing = "d"
+        if self.player:
+            self.cell.level.player = self
 
     def walk(self, direction):
         # direction = "u"
@@ -17,14 +20,14 @@ class Character:
         origin = self.cell
         destination = origin.neighbor(direction)
         if destination:
-            if destination.walkable:
+            if destination.walkable and not destination.character:
                 origin.character = None
                 destination.character = self
 
                 self.cell = destination
                 self.facing = direction
 
-                if destination.drop:
+                if destination.drop and self.player:
                     self.collect(destination.drop)
 
                 origin.tick()
@@ -35,3 +38,7 @@ class Character:
         match drop.char:
             case curses.ACS_DIAMOND:
                 self.coins += random.randrange(2,7)
+
+    def wander(self):
+        direction = random.choice(["u", "d", "l", "r"] + [self.facing]*3)
+        self.walk(direction)

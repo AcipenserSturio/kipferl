@@ -47,5 +47,7 @@ class Game:
             case 113: # q
                 self.game_quit = True
                 return False
+            case 32: # space
+                return True
             case _:
                 return False
