@@ -9,7 +9,7 @@ class Sidebar:
         self.y = 0
         self.x = curses.COLS-self.cols
         self.window = curses.newwin(self.lines, self.cols, self.y, self.x)
-        self.window.bkgd(" ", curses.color_pair(188))
+        # self.window.bkgd(" ", curses.color_pair(188))
         self.draw_border()
 
     def refresh(self, player):
@@ -36,6 +36,7 @@ class Sidebar:
         self.window.attrset(0)
 
     def draw_control(self, char, hint):
-        self.window.addstr("  [ ")
-        self.window.addch(char)
-        self.window.addstr(" ] " + hint + "\n")
+        self.window.addstr("  [ ", curses.color_pair(2) | curses.A_REVERSE)
+        self.window.addch(char, curses.color_pair(2) | curses.A_REVERSE)
+        self.window.addstr(" ] ", curses.color_pair(2) | curses.A_REVERSE)
+        self.window.addstr(hint + "\n")
