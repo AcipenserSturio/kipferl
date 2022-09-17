@@ -1,5 +1,7 @@
 import random
 
+import curses
+
 from .character import Character
 from .drop import Drop
 
@@ -35,17 +37,17 @@ class Cell:
     def init_qualities(self):
         match self.char:
             case "#":
-                self.color = 56
+                self.color = 22
             case ".":
-                self.color = 85
+                self.color = 229
                 self.walkable = True
                 if random.random() < 0.03:
-                    self.drop = Drop(self, "ꙮ")
+                    self.drop = Drop(self, curses.ACS_DIAMOND)
             case "A":
-                self.character = Character(self, "ඞ")
+                self.character = Character(self, "µ")
                 self.level.set_player(self.character)
                 self.char = "."
-                self.color = 85
+                self.color = 229
                 self.walkable = True
             case "\n":
                 self.char = "F"

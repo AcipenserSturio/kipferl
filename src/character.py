@@ -1,3 +1,7 @@
+import random
+
+import curses
+
 class Character:
     def __init__(self, cell, char):
         self.cell = cell
@@ -29,5 +33,5 @@ class Character:
     def collect(self, drop):
         drop.cell.drop = None
         match drop.char:
-            case "ꙮ":
-                self.coins += 5
+            case curses.ACS_DIAMOND:
+                self.coins += random.randrange(2,7)

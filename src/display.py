@@ -34,7 +34,7 @@ class Display:
         y_offset = clamp(self.level.player.cell.y - self.lines // 2, 0, self.level.lines - self.lines)
         x_offset = clamp(self.level.player.cell.x - self.cols // 2, 0, self.level.cols - self.cols)
         self.window.refresh(y_offset, x_offset, 0, 0, self.lines, self.cols)
-        self.sidebar.refresh()
+        self.sidebar.refresh(self.level.player)
         self.window.timeout(10)
 
 
