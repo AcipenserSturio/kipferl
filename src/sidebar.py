@@ -14,13 +14,28 @@ class Sidebar:
 
     def refresh(self, player):
         self.window.clear()
-        self.draw_border()
-        self.window.move(1, 1)
-        text = f"Coins: {player.coins}"
+        self.window.move(2, 0)
+        text = f"  Coins: {player.coins}\n  Coordinates: ({player.cell.x}, {player.cell.y})"
         self.window.addstr(text)
+        self.window.move(self.lines-7, 0)
+
+        controls = [(curses.ACS_UARROW, "move up"),
+                    (curses.ACS_LARROW, "move left"),
+                    (curses.ACS_DARROW, "move down"),
+                    (curses.ACS_RARROW, "move right"),
+                    ("Q", "quit"),]
+        for char, hint in controls:
+            self.draw_control(char, hint)
+
+        self.draw_border()
         self.window.refresh()
 
     def draw_border(self):
         self.window.attrset(curses.color_pair(238))
         self.window.border(" ", " ", " ", " ", " ", " ", " ", " ")
         self.window.attrset(0)
+
+    def draw_control(self, char, hint):
+        self.window.addstr("  [ ")
+        self.window.addch(char)
+        self.window.addstr(" ] " + hint + "\n")
