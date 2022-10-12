@@ -26,14 +26,16 @@
         "char": "  ",
         "color": 29,
         "land": true,
-        "elevation": 0.65
+        "elevation": 0.65,
+        "sound": "grass.wav"
     },
     {
         "name": "Hill",
         "char": "  ",
         "color": 245,
         "land": true,
-        "elevation": 0.85
+        "elevation": 0.85,
+        "sound": "stone.wav"
     },
     {
         "name": "Mountain",

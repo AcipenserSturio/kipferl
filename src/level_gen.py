@@ -12,7 +12,7 @@ def perlin_noise (
         octaves = 5,
         persistence = 0.5,
         lacunarity = 2.0,
-        seed = np.random.randint(0,100),
+        seed = np.random.randint(0,100000),
     ):
 
     world = np.zeros(shape)
