@@ -12,7 +12,7 @@ def perlin_noise (
         octaves = 5,
         persistence = 0.5,
         lacunarity = 2.0,
-        seed = np.random.randint(0,100000),
+        seed = np.random.randint(0,10000000),
     ):
 
     world = np.zeros(shape)
@@ -26,7 +26,8 @@ def perlin_noise (
                    lacunarity=lacunarity,
                    repeatx=1024,
                    repeaty=1024,
-                   base=seed)
+                   base=seed,
+                   )
 
 def pythagoras(x1, x2, y1, y2):
     return np.sqrt(np.abs(x1-x2)**2+np.abs(y1-y2)**2)
@@ -73,8 +74,8 @@ def add_color(world):
     color_world = vindices(world)
     return color_world.astype(np.uint8)
 
-def generate_level():
-    generated_noise = perlin_noise()
+def generate_level(seed=None):
+    generated_noise = perlin_noise(seed=seed)
     world = add_border(generated_noise)
     color_world = add_color(world)
 

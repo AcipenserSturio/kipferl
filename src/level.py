@@ -1,3 +1,5 @@
+import random
+
 from .cell import Cell
 from .character import Character
 from .level_gen import generate_level
@@ -11,7 +13,8 @@ class Level:
 
         # self.load("assets/levels/huge")
         # self.build()
-        self.from_array(generate_level())
+        self.seed = random.randint(0, 10000000)
+        self.from_array(generate_level(seed=self.seed))
 
     def enemy_turn(self):
         for enemy in self.enemies:
