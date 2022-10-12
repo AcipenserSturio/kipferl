@@ -13,7 +13,7 @@ class Level:
 
         # self.load("assets/levels/huge")
         # self.build()
-        self.seed = random.randint(0, 10000000)
+        self.seed = random.randint(0, 100000)
         self.from_array(generate_level(seed=self.seed))
 
     def enemy_turn(self):
@@ -33,7 +33,7 @@ class Level:
 
                 cell = Cell(self, index, y, x)
                 # temporary
-                if x == 150 and y == 150:
+                if x == self.cols // 2 and y == self.lines // 2:
                     self.spawn_player(cell)
                 self.board.append(cell)
 

@@ -1,33 +1,33 @@
-import noise
 import numpy as np
-from PIL import Image
+from perlin_numpy import generate_fractal_noise_2d
 
-from matplotlib import pyplot as plt
+# from PIL import Image
 
 from .assets import cell_qualities
 
 def perlin_noise (
-        shape = (384,384),
-        scale = 0.1,
+        shape = (256,256),
+        res = (8,8),
         octaves = 5,
         persistence = 0.5,
-        lacunarity = 2.0,
-        seed = np.random.randint(0,10000000),
+        lacunarity = 2,
+        seed = None,
     ):
+    if seed:
+        np.random.seed(seed)
 
-    world = np.zeros(shape)
-    world_x, world_y = np.meshgrid(np.linspace(0, 1, shape[0]), np.linspace(0, 1, shape[1]))
+    noise = generate_fractal_noise_2d(
+            shape=shape,
+            res=res,
+            octaves=octaves,
+            persistence=persistence,
+            lacunarity=lacunarity,
+        )
 
-    pnoise = np.vectorize(noise.pnoise2)
-    return pnoise(world_x/scale,
-                   world_y/scale,
-                   octaves=octaves,
-                   persistence=persistence,
-                   lacunarity=lacunarity,
-                   repeatx=1024,
-                   repeaty=1024,
-                   base=seed,
-                   )
+    clamp_noise = (noise < -1)*-1+\
+                  (noise < 1)*(noise >= -1)*noise+\
+                  (noise >= 1)*1
+    return clamp_noise
 
 def pythagoras(x1, x2, y1, y2):
     return np.sqrt(np.abs(x1-x2)**2+np.abs(y1-y2)**2)
@@ -44,7 +44,7 @@ def semicircle(value):
 def add_border(world):
     center_x, center_y = world.shape[1] // 2, world.shape[0] // 2
 
-    perlin = linear(world, -.5, .5, -1, 1)
+    perlin = world
     xx, yy = np.meshgrid(np.arange(world.shape[1]), np.arange(world.shape[0]))
     dist = pythagoras(xx, center_x, yy, center_y)
     dist = linear(dist, min(center_x, center_y), 0, -1, 1)
@@ -59,7 +59,7 @@ def add_border(world):
 def index_by_elevation(elevation):
     elevations = sorted([(index, cell["elevation"]) for index, cell in enumerate(cell_qualities)], key=lambda x: x[1])
     for index, cutoff in elevations:
-        if elevation < cutoff:
+        if elevation <= cutoff:
             return index
     # just in case
     return 0
