@@ -18,8 +18,6 @@ class Game:
             self.init_palette()
 
             self.level = Level()
-            self.level.load("assets/levels/huge")
-            self.level.build()
 
             self.display = Display(self.level, curses.LINES-1, curses.COLS-1)
 

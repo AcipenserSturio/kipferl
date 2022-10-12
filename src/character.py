@@ -9,8 +9,6 @@ class Character:
         self.player = player
         self.coins = 0
         self.facing = "d"
-        if self.player:
-            self.cell.level.player = self
 
     def walk(self, direction):
         # direction = "u"

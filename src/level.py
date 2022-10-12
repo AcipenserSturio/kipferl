@@ -1,4 +1,6 @@
 from .cell import Cell
+from .character import Character
+from .level_gen import generate_level
 
 class Level:
     def __init__(self):
@@ -6,6 +8,10 @@ class Level:
         self.ticked = set()
         self.player = None
         self.enemies = set()
+
+        # self.load("assets/levels/huge")
+        # self.build()
+        self.from_array(generate_level())
 
     def enemy_turn(self):
         for enemy in self.enemies:
@@ -16,6 +22,24 @@ class Level:
             self.raw_level = [line[:-1] for line in f.readlines()]
             self.lines = len(self.raw_level)
             self.cols = len(self.raw_level[0])
+
+    def from_array(self, array):
+        self.lines, self.cols = array.shape
+        for y, line in enumerate(array):
+            for x, index in enumerate(line):
+
+                cell = Cell(self, index, y, x)
+                # temporary
+                if x == 150 and y == 150:
+                    self.spawn_player(cell)
+                self.board.append(cell)
+
+    def spawn_player(self, cell):
+        # add a check for enemies in cell?
+        # *if* they are already spawned in at this point
+        # add a check for repeated use?
+        self.player = Character(cell, "µ", player=True)
+        cell.character = self.player
 
     def flat(self, y, x):
         return y * self.cols + x
