@@ -46,10 +46,10 @@ class Cell:
 
         qualities = cell_qualities[self.index]
         self.color = qualities["color"]
-        self.walkable = qualities["land"]
         self.char = qualities["char"][0]
         self.name = qualities["name"]
         self.sound = qualities["sound"] if "sound" in qualities else None
+        self.walkable = qualities["walkable"]
 
         if self.walkable:
             if random.random() < 0.03:

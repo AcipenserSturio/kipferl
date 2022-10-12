@@ -4,14 +4,16 @@
         "char": "  ",
         "color": 26,
         "land": false,
-        "elevation": -0.2
+        "elevation": -0.2,
+        "walkable": false
     },
     {
         "name": "Sea",
         "char": "  ",
         "color": 33,
         "land": false,
-        "elevation": 0.25
+        "elevation": 0.25,
+        "walkable": true
     },
     {
         "name": "Beach",
@@ -19,6 +21,7 @@
         "color": 223,
         "land": true,
         "elevation": 0.35,
+        "walkable": true,
         "sound": "sand.wav"
     },
     {
@@ -27,21 +30,24 @@
         "color": 29,
         "land": true,
         "elevation": 0.65,
+        "walkable": true,
         "sound": "grass.wav"
-    },
-    {
-        "name": "Hill",
-        "char": "  ",
-        "color": 245,
-        "land": true,
-        "elevation": 0.85,
-        "sound": "stone.wav"
     },
     {
         "name": "Mountain",
         "char": "  ",
+        "color": 245,
+        "land": true,
+        "elevation": 0.85,
+        "walkable": true,
+        "sound": "stone.wav"
+    },
+    {
+        "name": "Snow",
+        "char": "  ",
         "color": 255,
         "land": true,
-        "elevation": 1
+        "elevation": 1,
+        "walkable": false
     }
 ]
