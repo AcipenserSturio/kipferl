@@ -5,15 +5,17 @@
         "color": 26,
         "land": false,
         "elevation": -0.2,
-        "walkable": false
+        "walkable": false,
+        "spawnable": false
     },
     {
         "name": "Sea",
         "char": "  ",
         "color": 33,
         "land": false,
-        "elevation": 0.25,
-        "walkable": true
+        "elevation": 0.2,
+        "walkable": true,
+        "spawnable": false
     },
     {
         "name": "Beach",
@@ -22,6 +24,7 @@
         "land": true,
         "elevation": 0.35,
         "walkable": true,
+        "spawnable": true,
         "sound": "sand.wav"
     },
     {
@@ -29,8 +32,9 @@
         "char": "  ",
         "color": 29,
         "land": true,
-        "elevation": 0.65,
+        "elevation": 0.7,
         "walkable": true,
+        "spawnable": true,
         "sound": "grass.wav"
     },
     {
@@ -38,8 +42,9 @@
         "char": "  ",
         "color": 245,
         "land": true,
-        "elevation": 0.85,
+        "elevation": 0.9,
         "walkable": true,
+        "spawnable": true,
         "sound": "stone.wav"
     },
     {
@@ -48,6 +53,7 @@
         "color": 255,
         "land": true,
         "elevation": 1,
-        "walkable": false
+        "walkable": false,
+        "spawnable": false
     }
 ]

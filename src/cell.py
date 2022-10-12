@@ -50,8 +50,9 @@ class Cell:
         self.name = qualities["name"]
         self.sound = qualities["sound"] if "sound" in qualities else None
         self.walkable = qualities["walkable"]
+        self.spawnable = qualities["spawnable"]
 
-        if self.walkable:
+        if self.spawnable:
             if random.random() < 0.03:
                 self.drop = Drop(self, curses.ACS_DIAMOND)
             elif random.random() < 0.004:
