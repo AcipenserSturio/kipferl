@@ -1,6 +1,8 @@
+from pathlib import Path
+
 from playsound import playsound
 
 def play(sound):
     if not sound:
         return
-    playsound(f"assets/sound/{sound}", False)
+    playsound(Path().cwd() / "assets" / "sound" / sound, False)
