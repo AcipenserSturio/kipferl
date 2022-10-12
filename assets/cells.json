@@ -18,7 +18,8 @@
         "char": "  ",
         "color": 223,
         "land": true,
-        "elevation": 0.35
+        "elevation": 0.35,
+        "sound": "sand.wav"
     },
     {
         "name": "Grass",

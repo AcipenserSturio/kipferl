@@ -2,6 +2,8 @@ import random
 
 import curses
 
+from .sound import play
+
 class Character:
     def __init__(self, cell, char, player=False):
         self.cell = cell
@@ -18,6 +20,8 @@ class Character:
         origin = self.cell
         destination = origin.neighbor(direction)
         if destination:
+            if self.player:
+                play(destination.sound)
             if destination.walkable and not destination.character:
                 origin.character = None
                 destination.character = self
