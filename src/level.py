@@ -15,6 +15,7 @@ class Level:
         # self.build()
         self.seed = random.randint(0, 100000)
         self.from_array(generate_level(seed=self.seed))
+        self.detect_islands()
 
     def enemy_turn(self):
         for enemy in self.enemies:
@@ -43,6 +44,31 @@ class Level:
         # add a check for repeated use?
         self.player = Character(cell, "µ", player=True)
         cell.character = self.player
+
+    def detect_islands(self):
+        land = set(cell for cell in self.board if cell.land)
+        islands = []
+
+        while land:
+            queue = []
+            queue.append(land.pop())
+            islands.append([])
+
+            while queue:
+                seed = queue.pop(0)
+                islands[-1].append(seed)
+                neighbors = {seed.neighbor("u"),
+                             seed.neighbor("d"),
+                             seed.neighbor("l"),
+                             seed.neighbor("r")
+                             }
+                land_neighbors = land & neighbors
+                land.difference_update(land_neighbors)
+                queue.extend(land_neighbors)
+
+        for index, island in enumerate(islands):
+            for cell in island:
+                cell.island = index
 
     def flat(self, y, x):
         return y * self.cols + x

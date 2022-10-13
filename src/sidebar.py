@@ -15,7 +15,7 @@ class Sidebar:
     def refresh(self, player):
         self.window.clear()
         self.window.move(2, 0)
-        text = f"  Coins: {player.coins}\n  {player.cell.name} at ({player.cell.x}, {player.cell.y})\n  Seed: {player.cell.level.seed}"
+        text = f"  Coins: {player.coins}\n  {player.cell.name} at ({player.cell.x}, {player.cell.y})\n  Seed: {player.cell.level.seed}\n  Island id: {player.cell.island}"
         self.window.addstr(text)
         self.window.move(self.lines-8, 0)
 

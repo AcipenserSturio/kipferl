@@ -17,6 +17,7 @@ class Cell:
         self.character = None
         self.drop = None
         self.walkable = False
+        self.island = None
         self.init_qualities()
 
     def neighbor(self, direction):
@@ -48,6 +49,7 @@ class Cell:
         self.color = qualities["color"]
         self.char = qualities["char"][0]
         self.name = qualities["name"]
+        self.land = qualities["land"]
         self.sound = qualities["sound"] if "sound" in qualities else None
         self.walkable = qualities["walkable"]
         self.spawnable = qualities["spawnable"]
