@@ -1,21 +1,38 @@
+"""
+Contains the Sidebar class, which represents a UI field with player data.
+"""
+
 import curses
 
 SIDEBAR_WIDTH = 40
 
 class Sidebar:
-    def __init__(self):
-        self.lines = curses.LINES
+    """
+    A UI field with player data.
+    Includes keyboard hints.
+    """
+    def __init__(self, display_lines, display_cols):
+        self.lines = display_lines
         self.cols = SIDEBAR_WIDTH
         self.y = 0
-        self.x = curses.COLS-self.cols
+        self.x = display_cols - self.cols
         self.window = curses.newwin(self.lines, self.cols, self.y, self.x)
         # self.window.bkgd(" ", curses.color_pair(188))
         self.draw_border()
 
     def refresh(self, player):
+        """
+        Fill Sidebar with player data, keyboard hints, and border.
+        Refresh the screen.
+        """
         self.window.clear()
         self.window.move(2, 0)
-        text = f"  Coins: {player.coins}\n  {player.cell.name} at ({player.cell.x}, {player.cell.y})\n  Seed: {player.cell.level.seed}\n  Island id: {player.cell.island}"
+        text = "".join([
+                f"  Coins: {player.coins}\n",
+                f"  {player.cell.name} at ({player.cell.x}, {player.cell.y})\n",
+                f"  Seed: {player.cell.level.seed}\n",
+                f"  Island id: {player.cell.island}\n",
+                ])
         self.window.addstr(text)
         self.window.move(self.lines-8, 0)
 
@@ -32,11 +49,19 @@ class Sidebar:
         self.window.refresh()
 
     def draw_border(self):
+        """
+        Draw a grey border around the Sidebar.
+        Overrides any text that appears on the edge of the Sidebar.
+        """
         self.window.attrset(curses.color_pair(238))
         self.window.border(" ", " ", " ", " ", " ", " ", " ", " ")
         self.window.attrset(0)
 
     def draw_control(self, char, hint):
+        """
+        Write a keyboard hint at the current cursor position.
+        Use green to highlight the key.
+        """
         self.window.addstr("  [ ", curses.color_pair(2) | curses.A_REVERSE)
         self.window.addch(char, curses.color_pair(2) | curses.A_REVERSE)
         self.window.addstr(" ] ", curses.color_pair(2) | curses.A_REVERSE)

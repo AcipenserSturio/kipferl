@@ -1,18 +1,30 @@
+"""
+A collection of numpy functions which can be used together to generate terrain.
+"""
+
 import numpy as np
 from perlin_numpy import generate_fractal_noise_2d
 
 # from PIL import Image
 
 from .assets import cell_qualities
+from .utils import (
+    euclidean,
+    linear,
+    sigmoid,
+    semicircle,
+)
 
-def perlin_noise (
-        shape = (256,256),
-        res = (8,8),
-        octaves = 5,
-        persistence = 0.5,
-        lacunarity = 2,
-        seed = None,
-    ):
+def perlin_noise(seed=None):
+    """
+    Generate a 2d numpy array of stacked Perlin noise.
+    """
+    shape = (256, 256)
+    res = (8, 8)
+    octaves = 5
+    persistence = 0.5
+    lacunarity = 2
+
     if seed:
         np.random.seed(seed)
 
@@ -29,24 +41,15 @@ def perlin_noise (
                   (noise >= 1)*1
     return clamp_noise
 
-def pythagoras(x1, x2, y1, y2):
-    return np.sqrt(np.abs(x1-x2)**2+np.abs(y1-y2)**2)
-
-def linear(value, x1, x2, y1, y2):
-    return (y1-y2)*(value-x1)/(x1-x2) + y1
-
-def sigmoid(value, bias=0):
-    return np.tanh(np.tan(np.pi*value/2))
-
-def semicircle(value):
-    return np.sqrt(4-(value-1)**2)-1
-
 def add_border(world):
+    """
+    Add a fuzzy circular border around the Perlin noise.
+    """
     center_x, center_y = world.shape[1] // 2, world.shape[0] // 2
 
     perlin = world
     xx, yy = np.meshgrid(np.arange(world.shape[1]), np.arange(world.shape[0]))
-    dist = pythagoras(xx, center_x, yy, center_y)
+    dist = euclidean(xx, center_x, yy, center_y)
     dist = linear(dist, min(center_x, center_y), 0, -1, 1)
     dist = np.maximum(dist, -1)
     dist = sigmoid(semicircle(semicircle(dist)))
@@ -57,7 +60,11 @@ def add_border(world):
     return perlin_in_sphere
 
 def index_by_elevation(elevation):
-    elevations = sorted([(index, cell["elevation"]) for index, cell in enumerate(cell_qualities)], key=lambda x: x[1])
+    """
+    Return terrain type, based on cutoff points imported from game assets.
+    """
+    elevations = [(index, cell["elevation"]) for index, cell in enumerate(cell_qualities)]
+    elevations = sorted(elevations, key=lambda x: x[1])
     for index, cutoff in elevations:
         if elevation <= cutoff:
             return index
@@ -65,6 +72,10 @@ def index_by_elevation(elevation):
     return 0
 
 def add_color(world):
+    """
+    Convert a continuous elevation map into discrete terrain types,
+    using cutoff points imported from game assets.
+    """
     # if requires a new axis:
     # world = world[..., np.newaxis]
 
@@ -75,6 +86,10 @@ def add_color(world):
     return color_world.astype(np.uint8)
 
 def generate_level(seed=None):
+    """
+    Generate a 2d array corresponding to terrain types
+    using Perlin noise, with a fuzzy circular border.
+    """
     generated_noise = perlin_noise(seed=seed)
     world = add_border(generated_noise)
     color_world = add_color(world)

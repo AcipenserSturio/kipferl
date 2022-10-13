@@ -1,3 +1,7 @@
+"""
+Contains the Level class, which represents a 2d grid of Cells.
+"""
+
 import random
 
 from .cell import Cell
@@ -5,6 +9,12 @@ from .character import Character
 from .level_gen import generate_level
 
 class Level:
+    """
+    Contains the Level class, which represents a 2d grid of Cells.
+    Controls the coordinate system, including communicating between neighboring Cells.
+    Processes turns.
+    Keeps track of Cells modified each turn.
+    """
     def __init__(self):
         self.board = []
         self.ticked = set()
@@ -18,16 +28,16 @@ class Level:
         self.detect_islands()
 
     def enemy_turn(self):
+        """
+        Process the turn for each non-player Character.
+        """
         for enemy in self.enemies:
             enemy.wander()
 
-    def load(self, filepath):
-        with open(filepath) as f:
-            self.raw_level = [line[:-1] for line in f.readlines()]
-            self.lines = len(self.raw_level)
-            self.cols = len(self.raw_level[0])
-
     def from_array(self, array):
+        """
+        Build the Cells of the Level from a numpy array.
+        """
         self.lines, self.cols = array.shape
         for y, line in enumerate(array):
             for x, index in enumerate(line):
@@ -39,6 +49,9 @@ class Level:
                 self.board.append(cell)
 
     def spawn_player(self, cell):
+        """
+        Add a player-controlled Character on the Cell.
+        """
         # add a check for enemies in cell?
         # *if* they are already spawned in at this point
         # add a check for repeated use?
@@ -46,6 +59,9 @@ class Level:
         cell.character = self.player
 
     def detect_islands(self):
+        """
+        Segment the Level into individual Islands.
+        """
         land = set(cell for cell in self.board if cell.land)
         islands = []
 
@@ -71,22 +87,24 @@ class Level:
                 cell.island = index
 
     def flat(self, y, x):
+        """
+        Converts a 2d coordinate into a 1d coordinate.
+        """
         return y * self.cols + x
 
     def coord(self, coord):
+        """
+        Converts a 1d coordinate into a 2d coordinate.
+        """
         return (coord // self.cols, coord % self.cols)
 
-    def build(self):
-        for y, line in enumerate(self.raw_level):
-            for x, char in enumerate(line):
-                self.board.append(Cell(self, char, y, x))
-
     def get_cell(self, y, x):
+        """
+        Return Cell corresponding to the given 2d coordinate.
+        Return None if the coordinate is out of bounds.
+        """
         if y < 0 or y >= self.lines:
             return None
         if x < 0 or x >= self.cols:
             return None
         return self.board[self.flat(y, x)]
-
-    def set_player(self, character):
-        self.player = character

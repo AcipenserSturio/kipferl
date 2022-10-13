@@ -1,9 +1,16 @@
+"""
+Handles sound output.
+"""
+
 from pathlib import Path
 from threading import Thread
 
 from playsound import playsound
 
 def play(sound):
+    """
+    Play a WAV file asynchronously.
+    """
     if not sound:
         return
     thread = Thread(target=_play, args=(sound,))
