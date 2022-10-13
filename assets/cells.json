@@ -6,7 +6,8 @@
         "land": false,
         "elevation": -0.2,
         "walkable": false,
-        "spawnable": false
+        "spawnable": false,
+        "sound": "water.wav"
     },
     {
         "name": "Sea",
@@ -15,7 +16,8 @@
         "land": false,
         "elevation": 0.2,
         "walkable": true,
-        "spawnable": false
+        "spawnable": false,
+        "sound": "water.wav"
     },
     {
         "name": "Beach",
@@ -42,7 +44,7 @@
         "char": "  ",
         "color": 245,
         "land": true,
-        "elevation": 0.9,
+        "elevation": 0.95,
         "walkable": true,
         "spawnable": true,
         "sound": "stone.wav"
