@@ -1,7 +1,7 @@
 [
     {
         "name": "Ocean",
-        "char": "  ",
+        "char": " ",
         "color": 26,
         "land": false,
         "elevation": -0.2,
@@ -11,7 +11,7 @@
     },
     {
         "name": "Sea",
-        "char": "  ",
+        "char": " ",
         "color": 33,
         "land": false,
         "elevation": 0.2,
@@ -21,7 +21,7 @@
     },
     {
         "name": "Beach",
-        "char": "  ",
+        "char": " ",
         "color": 223,
         "land": true,
         "elevation": 0.35,
@@ -31,7 +31,7 @@
     },
     {
         "name": "Grass",
-        "char": "  ",
+        "char": " ",
         "color": 29,
         "land": true,
         "elevation": 0.7,
@@ -41,7 +41,7 @@
     },
     {
         "name": "Mountain",
-        "char": "  ",
+        "char": " ",
         "color": 245,
         "land": true,
         "elevation": 0.95,
@@ -51,7 +51,7 @@
     },
     {
         "name": "Snow",
-        "char": "  ",
+        "char": " ",
         "color": 255,
         "land": true,
         "elevation": 1,

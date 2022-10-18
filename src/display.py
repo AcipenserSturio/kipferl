@@ -44,15 +44,11 @@ class Display:
         # Skip updating if last character. todo: fix
         if (cell.y == self.level.lines-1) and (cell.x == self.level.cols-1):
             return
-        if cell.island is not None and (cell.x + cell.y) % 7 < 3:
-            color_index = cell.island
-        else:
-            color_index = cell.color
-        color = curses.color_pair(color_index)
+        color = curses.color_pair(cell.terrain.color)
         char = cell.drawn_char()
         self.window.move(cell.y, cell.x*2)
         self.window.addch(char, color)
-        self.window.addch(char, color)
+        self.window.addch(" ", color)
 
     def refresh(self):
         """

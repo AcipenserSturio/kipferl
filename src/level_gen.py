@@ -7,7 +7,7 @@ from perlin_numpy import generate_fractal_noise_2d
 
 # from PIL import Image
 
-from .assets import cell_qualities
+from .assets import terrain_qualities
 from .utils import (
     euclidean,
     linear,
@@ -63,7 +63,7 @@ def index_by_elevation(elevation):
     """
     Return terrain type, based on cutoff points imported from game assets.
     """
-    elevations = [(index, cell["elevation"]) for index, cell in enumerate(cell_qualities)]
+    elevations = [(index, cell["elevation"]) for index, cell in enumerate(terrain_qualities)]
     elevations = sorted(elevations, key=lambda x: x[1])
     for index, cutoff in elevations:
         if elevation <= cutoff:

@@ -32,7 +32,7 @@ class Game:
 
             self.init_palette()
 
-            self.level = Level()
+            self.level = Level(self)
             self.display = Display(self.level, curses.LINES-1, curses.COLS-1)
 
             while not self.game_quit:
@@ -64,7 +64,15 @@ class Game:
             case 113: # q
                 self.game_quit = True
                 return False
+            case 101: # e
+                self.level.player.heal()
+                return True
             case 32: # space
+                self.level.player.attack_nearby()
                 return True
             case _:
                 return False
+
+    def over(self):
+        self.level = Level(self)
+        self.display = Display(self.level, curses.LINES-1, curses.COLS-1)

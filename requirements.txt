@@ -1,0 +1,4 @@
+numpy
+windows-curses
+git+https://github.com/pvigier/perlin-numpy
+git+https://github.com/TaylorSMarks/playsound.git@9cf4af20caa5ae8586f88b65659681b24f0c4e69

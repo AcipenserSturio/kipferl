@@ -12,10 +12,10 @@ class Sidebar:
     Includes keyboard hints.
     """
     def __init__(self, display_lines, display_cols):
-        self.lines = display_lines
+        self.lines = display_lines + 1
         self.cols = SIDEBAR_WIDTH
         self.y = 0
-        self.x = display_cols - self.cols
+        self.x = display_cols - self.cols + 1
         self.window = curses.newwin(self.lines, self.cols, self.y, self.x)
         # self.window.bkgd(" ", curses.color_pair(188))
         self.draw_border()
@@ -29,9 +29,11 @@ class Sidebar:
         self.window.move(2, 0)
         text = "".join([
                 f"  Coins: {player.coins}\n",
-                f"  {player.cell.name} at ({player.cell.x}, {player.cell.y})\n",
+                f"  Health: {player.health} / {player.max_health}\n",
+                f"  Facing: {player.facing}\n",
+                f"  {player.cell.terrain.name} at ({player.cell.x}, {player.cell.y})\n",
                 f"  Seed: {player.cell.level.seed}\n",
-                f"  Island id: {player.cell.island}\n",
+                f"  Island: {player.cell.island.nature.name if player.cell.island is not None else None} \n",
                 ])
         self.window.addstr(text)
         self.window.move(self.lines-8, 0)
@@ -40,7 +42,8 @@ class Sidebar:
                     (curses.ACS_LARROW, "move left"),
                     (curses.ACS_DARROW, "move down"),
                     (curses.ACS_RARROW, "move right"),
-                    (" ", "skip turn"),
+                    ("E", "heal"),
+                    (" ", "attack"),
                     ("Q", "quit"),]
         for char, hint in controls:
             self.draw_control(char, hint)

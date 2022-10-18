@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Plant",
+        "char": "P",
+        "color": 35,
+        "active": "Needles",
+        "passive": "Bark"
+    },
+    {
+        "name": "Water",
+        "char": "W",
+        "color": 33,
+        "active": "Heavy Rain",
+        "passive": "Sea Waves"
+    },
+    {
+        "name": "Ice",
+        "char": "I",
+        "color": 51,
+        "active": "Hail",
+        "passive": "Snow Cover"
+    },
+    {
+        "name": "Fire",
+        "char": "F",
+        "color": 202,
+        "active": "Fireball",
+        "passive": "Fire Breath"
+    },
+    {
+        "name": "Chaos",
+        "char": "C",
+        "color": 131,
+        "active": "Trickery",
+        "passive": "Instabiility"
+    },
+    {
+        "name": "Metal",
+        "char": "M",
+        "color": 250,
+        "active": "Iron Spears",
+        "passive": "Rust"
+    }
+]

@@ -6,6 +6,7 @@ import random
 
 from .cell import Cell
 from .character import Character
+from .island import Island
 from .level_gen import generate_level
 
 class Level:
@@ -15,11 +16,14 @@ class Level:
     Processes turns.
     Keeps track of Cells modified each turn.
     """
-    def __init__(self):
+    def __init__(self, game):
+        self.game = game
         self.board = []
+        self.islands = []
         self.ticked = set()
         self.player = None
         self.enemies = set()
+        self.quick_end_turn = False
 
         # self.load("assets/levels/huge")
         # self.build()
@@ -32,7 +36,14 @@ class Level:
         Process the turn for each non-player Character.
         """
         for enemy in self.enemies:
-            enemy.wander()
+            if self.quick_end_turn:
+                break
+            hunt = enemy.hunt()
+            if not hunt or random.random() < 0.3:
+                enemy.wander()
+            elif hunt:
+                enemy.walk(hunt)
+            # enemy.heal()
 
     def from_array(self, array):
         """
@@ -62,7 +73,7 @@ class Level:
         """
         Segment the Level into individual Islands.
         """
-        land = set(cell for cell in self.board if cell.land)
+        land = set(cell for cell in self.board if cell.terrain.land)
         islands = []
 
         while land:
@@ -83,8 +94,7 @@ class Level:
                 queue.extend(land_neighbors)
 
         for index, island in enumerate(islands):
-            for cell in island:
-                cell.island = index
+            self.islands.append(Island(self, island, index))
 
     def flat(self, y, x):
         """
