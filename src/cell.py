@@ -2,8 +2,6 @@
 Contains the Cell class, which represents a single spacial unit of a level.
 """
 
-import random
-
 from .assets import terrains
 
 class Cell:

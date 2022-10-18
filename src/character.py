@@ -74,11 +74,17 @@ class Character:
         self.walk(direction, avoid_water=True)
 
     def heal(self):
+        """Add health, up to a maximum value."""
         self.health += 5
         if self.health > self.max_health:
             self.health = self.max_health
 
     def hunt(self):
+        """
+        Look for the player.
+        If nearby, approach the player.
+        If next to the player, attack.
+        """
         if self.player:
             return
         player = self.cell.level.player
@@ -91,15 +97,15 @@ class Character:
         if abs(distance_x) > abs(distance_y):
             if distance_x > 0:
                 return "l"
-            else:
-                return "r"
-        else:
-            if distance_y > 0:
-                return "u"
-            else:
-                return "d"
+            return "r"
+        if distance_y > 0:
+            return "u"
+        return "d"
 
     def attack(self, character):
+        """
+        Deal damage to the Character's health.
+        """
         damage = random.randrange(1, 5)
         if self.player:
             damage *= 10
@@ -108,6 +114,11 @@ class Character:
             character.die()
 
     def die(self):
+        """
+        Triggered by health == 0.
+        Remove Character from Cell.
+        Trigger Game Over if player.
+        """
         play("death.wav")
         if self.player:
             self.cell.level.quick_end_turn = True
@@ -117,12 +128,10 @@ class Character:
         self.cell.character = None
         self.cell.tick()
 
-    def attack_facing(self):
-        neighbor = self.cell.neighbor(self.facing)
-        if neighbor.character:
-            self.attack(neighbor.character)
-
     def attack_nearby(self):
+        """
+        Find closest Character in a radius, attack.
+        """
         enemies = sorted(self.cell.level.enemies, key=self.euclidean, reverse=True)
         if not enemies:
             return
@@ -132,4 +141,7 @@ class Character:
         self.attack(closest_enemy)
 
     def euclidean(self, character):
+        """
+        Return Euclidean distance between self and Character.
+        """
         return (self.cell.x - character.cell.x) ** 2 +(self.cell.y - character.cell.y) ** 2
