@@ -20,7 +20,9 @@ A basic roguelike game written in Python and curses.
 
 * Run `python -m pip install -r requirements.txt` to install dependencies.
 
-  * On Linux, you may remove `windows-curses` from `requirements.txt`, since it is only needed for a Windows installation.
+  * On Windows, please also add `windows-curses` to `requirements.txt`.
+
+    * OS-dependent installation is planned for a later date, but not possible without meddling with official tests.
 
 * Run `python main.py` to launch the game.
 
