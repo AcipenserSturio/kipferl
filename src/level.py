@@ -33,17 +33,12 @@ class Level:
 
     def enemy_turn(self):
         """
-        Process the turn for each non-player Character.
+        Process the turn for each Enemy.
         """
         for enemy in self.enemies:
             if self.quick_end_turn:
                 break
-            hunt = enemy.hunt()
-            if not hunt or random.random() < 0.3:
-                enemy.wander()
-            elif hunt:
-                enemy.walk(hunt)
-            # enemy.heal()
+            enemy.do_turn()
 
     def from_array(self, array):
         """
@@ -61,7 +56,7 @@ class Level:
 
     def spawn_player(self, cell):
         """
-        Add a player-controlled Character on the Cell.
+        Add Player on the Cell.
         """
         # add a check for enemies in cell?
         # *if* they are already spawned in at this point

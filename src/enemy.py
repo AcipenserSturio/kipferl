@@ -7,6 +7,14 @@ class Enemy(Character):
     def interact(self, drop):
         return
 
+    def do_turn(self):
+        hunt = self.hunt()
+        if not hunt or random.random() < 0.3:
+            self.wander()
+        elif hunt:
+            self.walk(hunt)
+        # enemy.heal()
+
     def walk(self, direction, passively=False):
         """
         Attempt to move in a direction.

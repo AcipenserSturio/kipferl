@@ -45,7 +45,7 @@ class Game:
     def handle(self, key):
         """
         Depending on player input,
-        interact with the player Character or UI elements.
+        interact with Player or UI elements.
         If the player action ends the turn, return True, else return False.
         """
         if key == curses.KEY_LEFT:

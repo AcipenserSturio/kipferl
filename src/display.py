@@ -53,7 +53,7 @@ class Display:
 
     def refresh(self):
         """
-        If possible, center the "camera" on the player Character.
+        If possible, center the "camera" on Player.
         Refresh the screen, showing all queued updates simultaneously.
         """
         self.update()
