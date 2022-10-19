@@ -2,6 +2,10 @@
 
 A basic roguelike game written in Python and curses.
 
+<div align="center">
+<img src="./assets/screenshot.png">
+</div>
+
 # Setup
 
 ## Prerequisits
