@@ -20,6 +20,7 @@ class Game:
         self.quick_end_turn = False
         self.level = None
         self.display = None
+        self.headless = False
 
     def init_palette(self):
         """
@@ -54,6 +55,25 @@ class Game:
                     self.display.refresh()
                     self.level.ticked = set()
 
+    def run_headless(self, input_sequence=""):
+        """
+        Initialise the Level.
+        Process player input and game logic, until player quits the game.
+        Do not use curses.
+        """
+        self.headless = True
+        self.level = Level(self)
+
+        input_sequence = list(map(ord, input_sequence))
+
+        while not self.game_quit:
+            if not input_sequence:
+                break
+            turn = input_sequence.pop(0)
+            if turn:
+                self.enemy_turn()
+                self.level.ticked = set()
+
     def enemy_turn(self):
         """
         Process the turn for each Enemy.
@@ -70,19 +90,19 @@ class Game:
         interact with Player or UI elements.
         If the player action ends the turn, return True, else return False.
         """
-        if key == curses.KEY_LEFT:
+        if key == ord("a"):
             self.level.player.walk("l")
-        if key == curses.KEY_RIGHT:
+        if key == ord("d"):
             self.level.player.walk("r")
-        if key == curses.KEY_UP:
+        if key == ord("w"):
             self.level.player.walk("u")
-        if key == curses.KEY_DOWN:
+        if key == ord("s"):
             self.level.player.walk("d")
-        if key == 113: # q
+        if key == ord("q"):
             self.game_quit = True
-        if key == 101: # e
+        if key == ord("e"):
             self.level.player.heal()
-        if key == 32: # space
+        if key == ord(" "):
             self.level.player.attack_nearby()
         return True
 
@@ -93,9 +113,10 @@ class Game:
         """
         self.quick_end_turn = True
         self.level = Level(self)
-        self.display = Display(self.level,
-                                curses.LINES-1, # pylint: disable=no-member
-                                curses.COLS-1, # pylint: disable=no-member
-                                )
-        # Pylint is unaware of curses.LINES and curses.COLS,
-        # because they're initiated at runtime.
+        if not self.headless:
+            self.display = Display(self.level,
+                                    curses.LINES-1, # pylint: disable=no-member
+                                    curses.COLS-1, # pylint: disable=no-member
+                                    )
+            # Pylint is unaware of curses.LINES and curses.COLS,
+            # because they're initiated at runtime.

@@ -2,7 +2,7 @@ import unittest
 
 from src.level import Level
 
-class LevelGeneratorTest(unittest.TestCase):
+class LevelTest(unittest.TestCase):
 
     def setUp(self):
         self.level = Level(self)
