@@ -15,10 +15,11 @@ class Game:
     Communicates game state with the curses display.
     Processes turns.
     """
-    def __init__(self):
+    def __init__(self, seed=None):
         self.game_quit = False
         self.quick_end_turn = False
         self.level = None
+        self.seed = seed
         self.display = None
         self.headless = False
 
@@ -40,7 +41,7 @@ class Game:
 
             self.init_palette()
 
-            self.level = Level(self)
+            self.level = Level(self, self.seed)
             self.display = Display(self.level,
                                    curses.LINES-1, # pylint: disable=no-member
                                    curses.COLS-1, # pylint: disable=no-member
@@ -62,7 +63,7 @@ class Game:
         Do not use curses.
         """
         self.headless = True
-        self.level = Level(self)
+        self.level = Level(self, self.seed)
 
         input_sequence = list(map(ord, input_sequence))
 
@@ -112,7 +113,7 @@ class Game:
         Start new Level and Display.
         """
         self.quick_end_turn = True
-        self.level = Level(self)
+        self.level = Level(self, self.seed)
         if not self.headless:
             self.display = Display(self.level,
                                     curses.LINES-1, # pylint: disable=no-member

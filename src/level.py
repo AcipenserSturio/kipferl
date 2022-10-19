@@ -18,14 +18,14 @@ class Level:
     # pylint: disable=too-many-instance-attributes
     # This class (obviously) holds many elements of a Level,
     # so the many instances are justified.
-    def __init__(self, game):
+    def __init__(self, game, seed=None):
         self.game = game
         self.board = []
         self.islands = []
         self.ticked = set()
         self.player = None
         self.enemies = set()
-        self.seed = random.randint(0, 100000)
+        self.seed = random.randint(0, 100000) if not seed else seed
 
         self.from_array(LevelGenerator(self.seed).generate())
         self.detect_islands()

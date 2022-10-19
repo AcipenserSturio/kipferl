@@ -5,7 +5,7 @@ from src.game import Game
 class GameTest(unittest.TestCase):
 
     def setUp(self):
-        self.game = Game()
+        self.game = Game(seed=0)
 
     def test_basic_generation(self):
         self.game.run_headless()
