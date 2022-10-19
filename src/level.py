@@ -15,6 +15,9 @@ class Level:
     Controls the coordinate system, including communicating between neighboring Cells.
     Keeps track of Cells modified each turn.
     """
+    # pylint: disable=too-many-instance-attributes
+    # This class (obviously) holds many elements of a Level,
+    # so the many instances are justified.
     def __init__(self, game):
         self.game = game
         self.board = []
