@@ -2,7 +2,6 @@
 Contains the Player class, which represents a Character which is controlled by the player.
 """
 
-import curses
 import random
 
 from .character import Character
