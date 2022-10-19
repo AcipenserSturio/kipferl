@@ -27,6 +27,8 @@ class Sidebar:
         """
         self.window.clear()
         self.window.move(2, 0)
+        island_string = player.cell.island.nature.name \
+            if player.cell.island is not None else None
         text = "".join([
                 f"  Coins: {player.coins}\n",
                 f"  Health: {player.health} / {player.max_health}\n",
@@ -34,7 +36,7 @@ class Sidebar:
                 f"  {player.cell.terrain.name} at ({player.cell.x}, {player.cell.y})\n",
                 f"  Seed: {player.level.seed}\n",
                 f"  Enemies: {len(player.level.enemies)}\n",
-                f"  Island: {player.cell.island.nature.name if player.cell.island is not None else None} \n",
+                f"  Island: {island_string} \n",
                 ])
         self.window.addstr(text)
         self.window.move(self.lines-8, 0)

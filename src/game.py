@@ -72,26 +72,19 @@ class Game:
         """
         if key == curses.KEY_LEFT:
             self.level.player.walk("l")
-            return True
         if key == curses.KEY_RIGHT:
             self.level.player.walk("r")
-            return True
         if key == curses.KEY_UP:
             self.level.player.walk("u")
-            return True
         if key == curses.KEY_DOWN:
             self.level.player.walk("d")
-            return True
         if key == 113: # q
             self.game_quit = True
-            return False
         if key == 101: # e
             self.level.player.heal()
-            return True
         if key == 32: # space
             self.level.player.attack_nearby()
-            return True
-        return False
+        return True
 
     def over(self):
         self.quick_end_turn = True
