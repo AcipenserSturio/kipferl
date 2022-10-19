@@ -3,7 +3,7 @@
 A basic roguelike game written in Python and curses.
 
 <div align="center">
-<img src="./assets/screenshot.png">
+<img src="./assets/img/screenshot.png">
 </div>
 
 # Setup
