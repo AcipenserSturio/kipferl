@@ -16,6 +16,7 @@ class Player(Character):
         super().__init__(*args, **kwargs)
 
         self.coins = 0
+        self.artifacts = 0
         self.death_causes_game_over = True
         self.damage_modifier = 5
 
@@ -49,7 +50,10 @@ class Player(Character):
 
     def collect(self, drop):
         """Collect a Drop."""
-        play("coin.wav")
         drop.cell.drop = None
-        if drop.char == curses.ACS_DIAMOND:
+        if drop.char == "◆":
+            play("coin.wav")
             self.coins += random.randrange(2,7)
+        if drop.char == "@":
+            play("artifact.wav")
+            self.artifacts += 1
