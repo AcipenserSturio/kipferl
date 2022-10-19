@@ -7,7 +7,7 @@ import random
 from .cell import Cell
 from .character import Character
 from .island import Island
-from .level_gen import generate_level
+from .level_gen import LevelGenerator
 
 class Level:
     """
@@ -28,7 +28,7 @@ class Level:
         # self.load("assets/levels/huge")
         # self.build()
         self.seed = random.randint(0, 100000)
-        self.from_array(generate_level(seed=self.seed))
+        self.from_array(LevelGenerator(self.seed).generate())
         self.detect_islands()
 
     def enemy_turn(self):
