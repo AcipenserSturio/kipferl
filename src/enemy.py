@@ -35,7 +35,7 @@ class Enemy(Character):
         If nearby, approach the player.
         If next to the player, attack.
         """
-        player = self.cell.level.player
+        player = self.level.player
         distance_x, distance_y = self.cell.x - player.cell.x, self.cell.y - player.cell.y
         if abs(distance_x) + abs(distance_y) > 25:
             return

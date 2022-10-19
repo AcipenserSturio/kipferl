@@ -23,6 +23,10 @@ class Character:
         self.death_causes_game_over = False
         self.damage_modifier = 1
 
+    @property
+    def level(self):
+        return self.cell.level
+
     def can_walk_on(self, cell):
         if not cell:
             return False
@@ -72,15 +76,20 @@ class Character:
         """
         play("death.wav")
         if self.death_causes_game_over:
-            self.cell.level.quick_end_turn = True
-            self.cell.level.game.over()
+            self.level.quick_end_turn = True
+            self.level.game.over()
             return
-        self.cell.level.enemies.remove(self)
+        self.level.enemies.remove(self)
         self.cell.character = None
         self.cell.tick()
 
-    def euclidean(self, character):
+    def distance(self, character, metric="euclidean"):
         """
-        Return Euclidean distance between self and Character.
+        Return distance between self and other Character.
+        Support Euclidean and Manhattan metrics.
         """
-        return (self.cell.x - character.cell.x) ** 2 +(self.cell.y - character.cell.y) ** 2
+        if metric == "manhattan":
+            return (abs(self.cell.x - character.cell.x)
+                    + abs(self.cell.y - character.cell.y))
+        return ((self.cell.x - character.cell.x) ** 2
+                + (self.cell.y - character.cell.y) ** 2) ** 0.5

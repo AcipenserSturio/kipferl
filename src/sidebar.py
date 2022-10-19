@@ -32,7 +32,7 @@ class Sidebar:
                 f"  Health: {player.health} / {player.max_health}\n",
                 f"  Facing: {player.facing}\n",
                 f"  {player.cell.terrain.name} at ({player.cell.x}, {player.cell.y})\n",
-                f"  Seed: {player.cell.level.seed}\n",
+                f"  Seed: {player.level.seed}\n",
                 f"  Island: {player.cell.island.nature.name if player.cell.island is not None else None} \n",
                 ])
         self.window.addstr(text)

@@ -33,11 +33,11 @@ class Player(Character):
         """
         Find closest Character in a radius, attack.
         """
-        enemies = sorted(self.cell.level.enemies, key=self.euclidean, reverse=True)
+        enemies = sorted(self.level.enemies, key=self.distance, reverse=True)
         if not enemies:
             return
         closest_enemy = enemies.pop()
-        if self.euclidean(closest_enemy) > 3:
+        if self.distance(closest_enemy) > 3:
             return
         self.attack(closest_enemy)
 
