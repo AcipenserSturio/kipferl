@@ -52,7 +52,7 @@ class Player(Character):
         closest_enemy = enemies.pop()
         if self.distance(closest_enemy) > 3:
             return
-        play("attack.wav")
+        play("player_attack.wav")
         self.attack(closest_enemy)
 
     def collect(self, drop):

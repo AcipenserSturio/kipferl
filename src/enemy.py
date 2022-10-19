@@ -59,7 +59,7 @@ class Enemy(Character):
         if abs(distance_x) + abs(distance_y) > 25:
             return None
         if abs(distance_x) + abs(distance_y) < 3:
-            play("damage.wav")
+            play("enemy_attack.wav")
             self.attack(player)
             return None
         if abs(distance_x) > abs(distance_y):

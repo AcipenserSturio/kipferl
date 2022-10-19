@@ -68,10 +68,11 @@ class Character:
         Remove Character from Cell.
         Trigger Game Over if player.
         """
-        play("death.wav")
         if self.death_causes_game_over:
+            play("player_death.wav")
             self.level.game.over()
             return
+        play("enemy_death.wav")
         self.level.enemies.remove(self)
         self.cell.character = None
         self.cell.tick()
