@@ -48,30 +48,28 @@ class Game:
         interact with the player Character or UI elements.
         If the player action ends the turn, return True, else return False.
         """
-        match key:
-            case curses.KEY_LEFT:
-                self.level.player.walk("l")
-                return True
-            case curses.KEY_RIGHT:
-                self.level.player.walk("r")
-                return True
-            case curses.KEY_UP:
-                self.level.player.walk("u")
-                return True
-            case curses.KEY_DOWN:
-                self.level.player.walk("d")
-                return True
-            case 113: # q
-                self.game_quit = True
-                return False
-            case 101: # e
-                self.level.player.heal()
-                return True
-            case 32: # space
-                self.level.player.attack_nearby()
-                return True
-            case _:
-                return False
+        if key == curses.KEY_LEFT:
+            self.level.player.walk("l")
+            return True
+        if key == curses.KEY_RIGHT:
+            self.level.player.walk("r")
+            return True
+        if key == curses.KEY_UP:
+            self.level.player.walk("u")
+            return True
+        if key == curses.KEY_DOWN:
+            self.level.player.walk("d")
+            return True
+        if key == 113: # q
+            self.game_quit = True
+            return False
+        if key == 101: # e
+            self.level.player.heal()
+            return True
+        if key == 32: # space
+            self.level.player.attack_nearby()
+            return True
+        return False
 
     def over(self):
         self.level = Level(self)

@@ -31,15 +31,14 @@ class Cell:
         # direction = "r"
         x_offset = 0
         y_offset = 0
-        match direction:
-            case "u":
-                y_offset -= 1
-            case "d":
-                y_offset += 1
-            case "l":
-                x_offset -= 1
-            case "r":
-                x_offset += 1
+        if direction == "u":
+            y_offset -= 1
+        elif direction == "d":
+            y_offset += 1
+        elif direction == "l":
+            x_offset -= 1
+        elif direction == "r":
+            x_offset += 1
         return self.level.get_cell(self.y+y_offset, self.x+x_offset)
 
     def drawn_char(self):

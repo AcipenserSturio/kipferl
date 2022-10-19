@@ -60,9 +60,8 @@ class Character:
         """Collect a Drop."""
         play("coin.wav")
         drop.cell.drop = None
-        match drop.char:
-            case curses.ACS_DIAMOND:
-                self.coins += random.randrange(2,7)
+        if drop.char == curses.ACS_DIAMOND:
+            self.coins += random.randrange(2,7)
 
     def wander(self):
         """
