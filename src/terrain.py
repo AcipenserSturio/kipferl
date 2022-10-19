@@ -15,5 +15,4 @@ class Terrain:
     land: bool
     elevation: float
     walkable: bool
-    spawnable: bool
     sound: str

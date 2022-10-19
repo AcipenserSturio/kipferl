@@ -36,7 +36,7 @@ class Island:
         Try to add Enemy characters to Cells.
         """
         for cell in self.cells:
-            if not cell.terrain.walkable or not cell.terrain.spawnable:
+            if not cell.terrain.walkable:
                 continue
             if cell.character:
                 continue

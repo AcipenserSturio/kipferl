@@ -6,7 +6,6 @@
         "land": false,
         "elevation": -0.2,
         "walkable": false,
-        "spawnable": false,
         "sound": "water.wav"
     },
     {
@@ -16,7 +15,6 @@
         "land": false,
         "elevation": 0.2,
         "walkable": true,
-        "spawnable": false,
         "sound": "water.wav"
     },
     {
@@ -26,7 +24,6 @@
         "land": true,
         "elevation": 0.35,
         "walkable": true,
-        "spawnable": true,
         "sound": "sand.wav"
     },
     {
@@ -36,7 +33,6 @@
         "land": true,
         "elevation": 0.7,
         "walkable": true,
-        "spawnable": true,
         "sound": "grass.wav"
     },
     {
@@ -46,7 +42,6 @@
         "land": true,
         "elevation": 0.95,
         "walkable": true,
-        "spawnable": true,
         "sound": "stone.wav"
     },
     {
@@ -56,6 +51,6 @@
         "land": true,
         "elevation": 1,
         "walkable": false,
-        "spawnable": false
+        "sound": "stone.wav"
     }
 ]
