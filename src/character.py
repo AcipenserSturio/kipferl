@@ -4,8 +4,6 @@ Contains the Character class, which represents an entity which occupies one cell
 
 import random
 
-import curses
-
 from .sound import play
 
 class Character:
@@ -25,9 +23,11 @@ class Character:
 
     @property
     def level(self):
+        """Character's Level is Cell's Level. For convenience."""
         return self.cell.level
 
     def can_walk_on(self, cell):
+        """Return whether Character is allowed to walk on Cell."""
         if not cell:
             return False
         if cell.character:

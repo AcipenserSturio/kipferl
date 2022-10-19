@@ -1,5 +1,6 @@
 """
-Contains the Enemy class, which represents a Character which tries to move every turn and attacks Player.
+Contains the Enemy class, which represents a Character
+which tries to move every turn and attacks Player.
 """
 
 import random
@@ -50,14 +51,15 @@ class Enemy(Character):
         Look for the player.
         If nearby, approach the player.
         If next to the player, attack.
+        Return direction of movement, or None if wandering.
         """
         player = self.level.player
         distance_x, distance_y = self.cell.x - player.cell.x, self.cell.y - player.cell.y
         if abs(distance_x) + abs(distance_y) > 25:
-            return
+            return None
         if abs(distance_x) + abs(distance_y) < 3:
             self.attack(player)
-            return
+            return None
         if abs(distance_x) > abs(distance_y):
             if distance_x > 0:
                 return "l"

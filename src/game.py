@@ -22,6 +22,11 @@ class Game:
         self.display = None
 
     def init_palette(self):
+        """
+        Initialise a 256-color palette for curses.
+        Requires a relatively modern terminal emulator.
+        curses does not support more than 256 color pairs without major adjustments.
+        """
         for index in range(1, 256):
             curses.init_pair(index, curses.COLOR_BLACK, index)
 
@@ -35,7 +40,12 @@ class Game:
             self.init_palette()
 
             self.level = Level(self)
-            self.display = Display(self.level, curses.LINES-1, curses.COLS-1)
+            self.display = Display(self.level,
+                                   curses.LINES-1, # pylint: disable=no-member
+                                   curses.COLS-1, # pylint: disable=no-member
+                                   )
+            # Pylint is unaware of curses.LINES and curses.COLS,
+            # because they're initiated at runtime.
 
             while not self.game_quit:
                 turn = self.handle(stdscr.getch())
@@ -86,4 +96,9 @@ class Game:
     def over(self):
         self.quick_end_turn = True
         self.level = Level(self)
-        self.display = Display(self.level, curses.LINES-1, curses.COLS-1)
+        self.display = Display(self.level,
+                                curses.LINES-1, # pylint: disable=no-member
+                                curses.COLS-1, # pylint: disable=no-member
+                                )
+        # Pylint is unaware of curses.LINES and curses.COLS,
+        # because they're initiated at runtime.
