@@ -14,35 +14,38 @@ class Character:
     May be controlled by the player.
     """
 
-    def __init__(self, cell, char, player=False):
+    def __init__(self, cell, char):
         self.cell = cell
         self.char = char
-        self.player = player
-        self.coins = 0
         self.facing = "d"
         self.max_health = 100
         self.health = self.max_health
+        self.death_causes_game_over = False
+        self.damage_modifier = 1
 
-    def walk(self, direction, avoid_water=False):
+    def can_walk_on(self, cell):
+        if not cell:
+            return False
+        if cell.character:
+            return False
+        if not cell.terrain.walkable:
+            return False
+        return True
+
+    def walk(self, direction, passively=False):
         """
         Attempt to move from the current position to a neighboring Cell in the given direction.
+        Implemented by derived classes.
         """
-        # direction = "u"
-        # direction = "d"
-        # direction = "l"
-        # direction = "r"
+        pass
+
+    def move(self, direction):
+        """
+        Move Character from origin to destination.
+        Do not check for validity.
+        """
         origin = self.cell
         destination = origin.neighbor(direction)
-        if not destination:
-            return
-        if avoid_water and not destination.terrain.land:
-            return
-        if self.player:
-            play(destination.terrain.sound)
-        if not destination.terrain.walkable:
-            return
-        if destination.character:
-            return
 
         origin.character = None
         destination.character = self
@@ -50,18 +53,8 @@ class Character:
         self.cell = destination
         self.facing = direction
 
-        if destination.drop and self.player:
-            self.collect(destination.drop)
-
         origin.tick()
         destination.tick()
-
-    def collect(self, drop):
-        """Collect a Drop."""
-        play("coin.wav")
-        drop.cell.drop = None
-        if drop.char == curses.ACS_DIAMOND:
-            self.coins += random.randrange(2,7)
 
     def heal(self):
         """Add health, up to a maximum value."""
@@ -73,9 +66,7 @@ class Character:
         """
         Deal damage to the Character's health.
         """
-        damage = random.randrange(1, 5)
-        if self.player:
-            damage *= 10
+        damage = random.randrange(1, 5) * self.damage_modifier
         character.health -= damage
         if character.health < 0:
             character.die()
@@ -87,7 +78,7 @@ class Character:
         Trigger Game Over if player.
         """
         play("death.wav")
-        if self.player:
+        if self.death_causes_game_over:
             self.cell.level.quick_end_turn = True
             self.cell.level.game.over()
             return

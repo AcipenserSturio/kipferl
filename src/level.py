@@ -66,7 +66,7 @@ class Level:
         # add a check for enemies in cell?
         # *if* they are already spawned in at this point
         # add a check for repeated use?
-        self.player = Player(cell, "µ", player=True)
+        self.player = Player(cell, "µ")
         cell.character = self.player
 
     def detect_islands(self):
