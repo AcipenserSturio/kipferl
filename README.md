@@ -30,7 +30,9 @@ A basic roguelike game written in Python and curses.
 
 * Run `python main.py` to launch the game.
 
-  * On Windows, you may double-click `start-on-windows.bat` instead, for convenience.
+  * On Windows, you may double-click `start-on-windows` instead, for convenience.
+  
+    * We also recommend you to set the _Lucida Console_ font, size 21 in `start-on-windows` file's properties for more convenient experience.
 
 # License
 

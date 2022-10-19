@@ -40,7 +40,7 @@ class Island:
             if cell.character:
                 continue
             if random.random() < 0.03:
-                cell.drop = Drop(cell,  ",") # alternate: curses.ACS_DIAMOND
+                cell.drop = Drop(cell,  "o") # alternate: curses.ACS_DIAMOND
             if random.random() < 0.01:
                 cell.character = Enemy(cell, self.nature.char)
                 self.level.enemies.add(cell.character)
