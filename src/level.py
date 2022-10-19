@@ -5,9 +5,9 @@ Contains the Level class, which represents a 2d grid of Cells.
 import random
 
 from .cell import Cell
-from .character import Character
 from .island import Island
 from .level_gen import LevelGenerator
+from .player import Player
 
 class Level:
     """
@@ -66,7 +66,7 @@ class Level:
         # add a check for enemies in cell?
         # *if* they are already spawned in at this point
         # add a check for repeated use?
-        self.player = Character(cell, "µ", player=True)
+        self.player = Player(cell, "µ", player=True)
         cell.character = self.player
 
     def detect_islands(self):

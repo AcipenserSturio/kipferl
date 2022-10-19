@@ -6,8 +6,8 @@ import curses
 import random
 
 from .assets import natures
-from .character import Character
 from .drop import Drop
+from .enemy import Enemy
 
 class Island:
     """
@@ -40,7 +40,7 @@ class Island:
             if random.random() < 0.03:
                 cell.drop = Drop(cell, curses.ACS_DIAMOND)
             if random.random() < 0.01:
-                self.character = Character(cell, self.nature.char)
+                self.character = Enemy(cell, self.nature.char)
                 self.level.enemies.add(self.character)
 
     def spawn_artifact(self):
