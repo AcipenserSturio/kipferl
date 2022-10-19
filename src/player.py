@@ -1,3 +1,7 @@
+"""
+Contains the Player class, which represents a Character which is controlled by the player.
+"""
+
 import curses
 import random
 
@@ -5,8 +9,10 @@ from .character import Character
 from .sound import play
 
 class Player(Character):
+    """
+    A Character which is controlled by the player.
+    """
     def __init__(self, *args, **kwargs):
-
         super().__init__(*args, **kwargs)
 
         self.coins = 0

@@ -66,4 +66,3 @@ class Display:
         self.window.refresh(y_offset, x_offset, 0, 0, self.lines, self.cols)
         self.sidebar.refresh(self.level.player)
         self.window.timeout(10)
-

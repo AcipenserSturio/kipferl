@@ -1,13 +1,21 @@
+"""
+Contains the Enemy class, which represents a Character which tries to move every turn and attacks Player.
+"""
+
 import random
 
 from .character import Character
 
 class Enemy(Character):
-
-    def interact(self, drop):
-        return
+    """
+    A Character which tries to move every turn and attacks Player.
+    Has "hunt" and "wander" ai behaviours.
+    """
 
     def do_turn(self):
+        """
+        Choose between hunting and wandering behaviours.
+        """
         hunt = self.hunt()
         if not hunt or random.random() < 0.3:
             self.wander()
