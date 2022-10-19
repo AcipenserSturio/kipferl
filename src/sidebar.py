@@ -41,10 +41,10 @@ class Sidebar:
         self.window.addstr(text)
         self.window.move(self.lines-8, 0)
 
-        controls = [(curses.ACS_UARROW, "move up"),
-                    (curses.ACS_LARROW, "move left"),
-                    (curses.ACS_DARROW, "move down"),
-                    (curses.ACS_RARROW, "move right"),
+        controls = [("W", "move up"),
+                    ("A", "move left"),
+                    ("S", "move down"),
+                    ("D", "move right"),
                     ("E", "heal"),
                     (" ", "attack"),
                     ("Q", "quit"),]
