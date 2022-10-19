@@ -53,12 +53,6 @@ class Character:
         origin.tick()
         destination.tick()
 
-    def heal(self):
-        """Add health, up to a maximum value."""
-        self.health += 5
-        if self.health > self.max_health:
-            self.health = self.max_health
-
     def attack(self, character):
         """
         Deal damage to the Character's health.

@@ -19,6 +19,13 @@ class Player(Character):
         self.death_causes_game_over = True
         self.damage_modifier = 5
 
+    def heal(self):
+        """Add health, up to a maximum value."""
+        play("heal.wav")
+        self.health += 5
+        if self.health > self.max_health:
+            self.health = self.max_health
+
     def walk(self, direction):
         """
         Attempt to move in a direction.
@@ -45,6 +52,7 @@ class Player(Character):
         closest_enemy = enemies.pop()
         if self.distance(closest_enemy) > 3:
             return
+        play("attack.wav")
         self.attack(closest_enemy)
 
     def collect(self, drop):
