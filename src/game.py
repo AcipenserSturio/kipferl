@@ -69,7 +69,7 @@ class Game:
         while not self.game_quit:
             if not input_sequence:
                 break
-            turn = input_sequence.pop(0)
+            turn = self.handle(input_sequence.pop(0))
             if turn:
                 self.enemy_turn()
                 self.level.ticked = set()
