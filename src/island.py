@@ -32,6 +32,9 @@ class Island:
         self.spawn_enemies()
 
     def spawn_enemies(self):
+        """
+        Try to add Enemy characters to Cells.
+        """
         for cell in self.cells:
             if not cell.terrain.walkable or not cell.terrain.spawnable:
                 continue
@@ -44,5 +47,8 @@ class Island:
                 self.level.enemies.add(cell.character)
 
     def spawn_artifact(self):
+        """
+        Add Artifact to a random Cell.
+        """
         artifact_cell = random.choice(self.cells)
         artifact_cell.drop = Drop(artifact_cell, "@")

@@ -87,6 +87,10 @@ class Game:
         return True
 
     def over(self):
+        """
+        End current turn processing.
+        Start new Level and Display.
+        """
         self.quick_end_turn = True
         self.level = Level(self)
         self.display = Display(self.level,
