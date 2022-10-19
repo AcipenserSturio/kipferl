@@ -1,5 +1,6 @@
 """
-A collection of numpy functions which can be used together to generate terrain.
+Contains the LevelGenerator class, which generates a 2d board
+from which a Level can be constructed.
 """
 
 import numpy as np
@@ -16,6 +17,10 @@ from .utils import (
 )
 
 class LevelGenerator:
+    """
+    Generates a 2d board from which a Level can be constructed.
+    Includes numpy functions which can be used together to generate terrain.
+    """
     def __init__(self, seed):
         self.seed = seed
 
@@ -65,8 +70,8 @@ class LevelGenerator:
         center_x, center_y = world.shape[1] // 2, world.shape[0] // 2
 
         perlin = world
-        xx, yy = np.meshgrid(np.arange(world.shape[1]), np.arange(world.shape[0]))
-        dist = euclidean(xx, center_x, yy, center_y)
+        x_matrix, y_matrix = np.meshgrid(np.arange(world.shape[1]), np.arange(world.shape[0]))
+        dist = euclidean(x_matrix, center_x, y_matrix, center_y)
         dist = linear(dist, min(center_x, center_y), 0, -1, 1)
         dist = np.maximum(dist, -1)
         dist = sigmoid(semicircle(semicircle(dist)))

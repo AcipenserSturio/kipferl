@@ -22,10 +22,8 @@ class Level:
         self.ticked = set()
         self.player = None
         self.enemies = set()
-
-        # self.load("assets/levels/huge")
-        # self.build()
         self.seed = random.randint(0, 100000)
+
         self.from_array(LevelGenerator(self.seed).generate())
         self.detect_islands()
 
