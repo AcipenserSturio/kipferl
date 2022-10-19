@@ -2,6 +2,7 @@
 Contains the Island class, which represents a contiguous landmass of Cells.
 """
 
+import curses
 import random
 
 from .assets import natures
@@ -40,7 +41,7 @@ class Island:
             if cell.character:
                 continue
             if random.random() < 0.03:
-                cell.drop = Drop(cell, "◆")
+                cell.drop = Drop(cell, curses.ACS_DIAMOND)
             if random.random() < 0.01:
                 cell.character = Enemy(cell, self.nature.char)
                 self.level.enemies.add(cell.character)
