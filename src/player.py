@@ -2,7 +2,6 @@
 Contains the Player class, which represents a Character which is controlled by the player.
 """
 
-import curses
 import random
 
 from .character import Character
@@ -59,7 +58,7 @@ class Player(Character):
     def collect(self, drop):
         """Collect a Drop."""
         drop.cell.drop = None
-        if drop.char == curses.ACS_DIAMOND:
+        if drop.char == ",": # alternate: curses.ACS_DIAMOND
             play("coin.wav")
             self.coins += random.randrange(2,7)
         if drop.char == "@":
