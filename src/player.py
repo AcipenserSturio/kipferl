@@ -53,4 +53,3 @@ class Player(Character):
         drop.cell.drop = None
         if drop.char == curses.ACS_DIAMOND:
             self.coins += random.randrange(2,7)
-

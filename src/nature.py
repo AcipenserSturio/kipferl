@@ -7,16 +7,5 @@ class Nature:
     A thematic grouping of spells.
     """
 
-    def __init__(self,
-            name,
-            char,
-            color,
-            active,
-            passive
-        ):
-
-        self.name = name
-        self.char = char
-        self.color = color
-        self.active = active
-        self.passive = passive
+    def __init__(self, *_, **kwargs):
+        self.__dict__.update(kwargs)
