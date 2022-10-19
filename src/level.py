@@ -13,7 +13,6 @@ class Level:
     """
     Contains the Level class, which represents a 2d grid of Cells.
     Controls the coordinate system, including communicating between neighboring Cells.
-    Processes turns.
     Keeps track of Cells modified each turn.
     """
     def __init__(self, game):
@@ -23,22 +22,12 @@ class Level:
         self.ticked = set()
         self.player = None
         self.enemies = set()
-        self.quick_end_turn = False
 
         # self.load("assets/levels/huge")
         # self.build()
         self.seed = random.randint(0, 100000)
         self.from_array(LevelGenerator(self.seed).generate())
         self.detect_islands()
-
-    def enemy_turn(self):
-        """
-        Process the turn for each Enemy.
-        """
-        for enemy in self.enemies:
-            if self.quick_end_turn:
-                break
-            enemy.do_turn()
 
     def from_array(self, array):
         """

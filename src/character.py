@@ -76,7 +76,6 @@ class Character:
         """
         play("death.wav")
         if self.death_causes_game_over:
-            self.level.quick_end_turn = True
             self.level.game.over()
             return
         self.level.enemies.remove(self)

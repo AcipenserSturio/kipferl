@@ -33,6 +33,7 @@ class Sidebar:
                 f"  Facing: {player.facing}\n",
                 f"  {player.cell.terrain.name} at ({player.cell.x}, {player.cell.y})\n",
                 f"  Seed: {player.level.seed}\n",
+                f"  Enemies: {len(player.level.enemies)}\n",
                 f"  Island: {player.cell.island.nature.name if player.cell.island is not None else None} \n",
                 ])
         self.window.addstr(text)
