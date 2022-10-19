@@ -5,8 +5,13 @@ import numpy
 from src.level_gen import LevelGenerator
 
 class LevelGeneratorTest(unittest.TestCase):
-    def test_basic_generation(self):
-        generator = LevelGenerator(seed=0)
-        board = generator.generate()
-        assert board is not None
-        assert isinstance(board, numpy.ndarray)
+
+    def setUp(self):
+        self.generator = LevelGenerator(seed=0)
+        self.board = self.generator.generate()
+
+    def test_generation(self):
+        assert self.board is not None
+
+    def test_types(self):
+        assert isinstance(self.board, numpy.ndarray)
