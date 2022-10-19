@@ -13,7 +13,7 @@ class Player(Character):
         self.death_causes_game_over = True
         self.damage_modifier = 5
 
-    def walk(self, direction, passively=False):
+    def walk(self, direction):
         """
         Attempt to move in a direction.
         """

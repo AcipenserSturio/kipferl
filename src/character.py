@@ -32,13 +32,6 @@ class Character:
             return False
         return True
 
-    def walk(self, direction, passively=False):
-        """
-        Attempt to move from the current position to a neighboring Cell in the given direction.
-        Implemented by derived classes.
-        """
-        pass
-
     def move(self, direction):
         """
         Move Character from origin to destination.
