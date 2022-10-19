@@ -96,18 +96,6 @@ class Level:
         for index, island in enumerate(islands):
             self.islands.append(Island(self, island, index))
 
-    def flat(self, y, x):
-        """
-        Converts a 2d coordinate into a 1d coordinate.
-        """
-        return y * self.cols + x
-
-    def coord(self, coord):
-        """
-        Converts a 1d coordinate into a 2d coordinate.
-        """
-        return (coord // self.cols, coord % self.cols)
-
     def get_cell(self, y, x):
         """
         Return Cell corresponding to the given 2d coordinate.
@@ -117,4 +105,4 @@ class Level:
             return None
         if x < 0 or x >= self.cols:
             return None
-        return self.board[self.flat(y, x)]
+        return self.board[y * self.cols + x]

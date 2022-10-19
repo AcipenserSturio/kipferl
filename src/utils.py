@@ -56,3 +56,11 @@ def sigmoid(value):
 def semicircle(value):
     """Apply a semicircle function to the value with numpy operators."""
     return np.sqrt(4-(value-1)**2)-1
+
+def clamp(value, minimum, maximum):
+    """Return the value, clamping it into the given range."""
+    if value < minimum:
+        return minimum
+    if value > maximum:
+        return maximum
+    return value

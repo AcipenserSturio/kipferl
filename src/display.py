@@ -5,6 +5,7 @@ powered by the curses library.
 
 import curses
 
+from .utils import clamp
 from .sidebar import Sidebar
 
 class Display:
@@ -66,11 +67,3 @@ class Display:
         self.sidebar.refresh(self.level.player)
         self.window.timeout(10)
 
-
-def clamp(value, minimum, maximum):
-    """Return the value, clamping it into the given range."""
-    if value < minimum:
-        return minimum
-    if value > maximum:
-        return maximum
-    return value
