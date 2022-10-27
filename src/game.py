@@ -18,10 +18,10 @@ class Game:
     def __init__(self, seed=None):
         self.game_quit = False
         self.quick_end_turn = False
-        self.level = None
         self.seed = seed
         self.display = None
         self.headless = False
+        self.level = Level(self, self.seed)
 
     def init_palette(self):
         """
@@ -41,7 +41,6 @@ class Game:
 
             self.init_palette()
 
-            self.level = Level(self, self.seed)
             self.display = Display(self.level,
                                    curses.LINES-1, # pylint: disable=no-member
                                    curses.COLS-1, # pylint: disable=no-member
