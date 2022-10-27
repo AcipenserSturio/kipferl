@@ -42,7 +42,7 @@ class Island:
             if random.random() < 0.03:
                 cell.drop = Drop(cell,  "o") # alternate: curses.ACS_DIAMOND
             if random.random() < 0.01:
-                cell.character = Enemy(cell, self.nature.char)
+                cell.character = Enemy(self.nature, cell, self.nature.char)
                 self.level.enemies.add(cell.character)
 
     def spawn_artifact(self):

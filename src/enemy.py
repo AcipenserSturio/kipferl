@@ -13,6 +13,9 @@ class Enemy(Character):
     A Character which tries to move every turn and attacks Player.
     Has "hunt" and "wander" ai behaviours.
     """
+    def __init__(self, nature, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.nature = nature
 
     def do_turn(self):
         """
@@ -59,7 +62,7 @@ class Enemy(Character):
         if abs(distance_x) + abs(distance_y) > 25:
             return None
         if abs(distance_x) + abs(distance_y) < 3:
-            play("enemy_attack.wav")
+            play(self.nature.sound)
             self.attack(player)
             return None
         if abs(distance_x) > abs(distance_y):
