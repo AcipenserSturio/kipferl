@@ -22,3 +22,7 @@ class CharacterTest(unittest.TestCase):
 
     def test_player_types(self):
         assert isinstance(self.game.level.player, Player)
+
+    def test_player_death_causes_game_over(self):
+        assert self.game.level.player.death_causes_game_over is True
+
