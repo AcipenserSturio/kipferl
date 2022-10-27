@@ -22,7 +22,7 @@ class Player(Character):
     def heal(self):
         """Add health, up to a maximum value."""
         play("heal.wav")
-        self.health += 5
+        self.health += 10
         if self.health > self.max_health:
             self.health = self.max_health
 
@@ -61,6 +61,8 @@ class Player(Character):
         if drop.char == "o": # alternate: curses.ACS_DIAMOND
             play("coin.wav")
             self.coins += random.randrange(2,7)
+        if drop.char == "a":
+            self.heal()
         if drop.char == "@":
             play("artifact.wav")
             self.artifacts += 1

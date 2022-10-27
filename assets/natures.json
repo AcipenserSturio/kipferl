@@ -4,41 +4,47 @@
         "char": "P",
         "color": 35,
         "active": "Needles",
-        "passive": "Bark"
+        "passive": "Bark",
+        "sound": "nature_plant.wav"
     },
     {
         "name": "Water",
         "char": "W",
         "color": 33,
         "active": "Heavy Rain",
-        "passive": "Sea Waves"
+        "passive": "Sea Waves",
+        "sound": "nature_water.wav"
     },
     {
         "name": "Ice",
         "char": "I",
         "color": 51,
         "active": "Hail",
-        "passive": "Snow Cover"
+        "passive": "Snow Cover",
+        "sound": "nature_ice.wav"
     },
     {
         "name": "Fire",
         "char": "F",
         "color": 202,
         "active": "Fireball",
-        "passive": "Fire Breath"
+        "passive": "Fire Breath",
+        "sound": "nature_fire.wav"
     },
     {
         "name": "Chaos",
         "char": "C",
         "color": 131,
         "active": "Trickery",
-        "passive": "Instabiility"
+        "passive": "Instabiility",
+        "sound": "nature_chaos.wav"
     },
     {
         "name": "Metal",
         "char": "M",
         "color": 250,
         "active": "Iron Spears",
-        "passive": "Rust"
+        "passive": "Rust",
+        "sound": "nature_metal.wav"
     }
 ]
