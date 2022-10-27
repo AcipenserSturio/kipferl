@@ -29,6 +29,7 @@ class Level:
 
         self.from_array(LevelGenerator(self.seed).generate())
         self.detect_islands()
+        self.spawn_player()
 
     def from_array(self, array):
         """
@@ -39,18 +40,16 @@ class Level:
             for x, index in enumerate(line):
 
                 cell = Cell(self, index, y, x)
-                # temporary
-                if x == self.cols // 2 and y == self.lines // 2:
-                    self.spawn_player(cell)
                 self.board.append(cell)
 
-    def spawn_player(self, cell):
+    def spawn_player(self):
         """
         Add Player on the Cell.
         """
         # add a check for enemies in cell?
         # *if* they are already spawned in at this point
         # add a check for repeated use?
+        cell = random.choice(random.choice(self.islands).cells)
         self.player = Player(cell, "µ")
         cell.character = self.player
 
