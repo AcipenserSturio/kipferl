@@ -32,7 +32,7 @@ A basic roguelike game written in Python and curses.
 
   * On Windows, you may double-click `start-on-windows` instead, for convenience.
   
-    * We also recommend you to set the _Lucida Console_ font, size 21 in `start-on-windows` file's properties for more convenient experience.
+    * Also, there is an opportunity to set an icon to `start-on-windows` file. For that purpose just place a game directory in your user directory or change it manually in file's properties (the icon is placed in `assets\img` directory).
 
 # License
 
