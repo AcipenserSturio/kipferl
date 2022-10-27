@@ -13,3 +13,4 @@ class Nature:
     color: int
     active: str
     passive: str
+    sound: str

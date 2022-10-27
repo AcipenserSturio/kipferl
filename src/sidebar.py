@@ -46,7 +46,6 @@ class Sidebar:
                     ("A", "move left"),
                     ("S", "move down"),
                     ("D", "move right"),
-                    ("E", "heal"),
                     (" ", "attack"),
                     ("Q", "quit"),]
         for char, hint in controls:
