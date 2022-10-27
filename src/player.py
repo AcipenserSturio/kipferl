@@ -6,6 +6,7 @@ import random
 
 from .character import Character
 from .sound import play
+from .assets import natures
 
 class Player(Character):
     """
@@ -66,3 +67,5 @@ class Player(Character):
         if drop.char == "@":
             play("artifact.wav")
             self.artifacts += 1
+        if self.artifacts == len(natures):
+            self.level.game.game_quit = True
