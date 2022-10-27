@@ -100,8 +100,6 @@ class Game:
             self.level.player.walk("d")
         if key == ord("q"):
             self.game_quit = True
-        if key == ord("e"):
-            self.level.player.heal()
         if key == ord(" "):
             self.level.player.attack_nearby()
         return True
