@@ -24,10 +24,3 @@ def read_natures():
         nature_qualities = json.load(json_file)
         return {index: Nature(**nature)
                 for index, nature in enumerate(nature_qualities)}
-
-# Invoking functions multiple times would result in duplicate objects in memory.
-# Wrapping this in a class would result in a singleton, which does not feel justified.
-# Therefore, this stays until there is a reason to change it.
-
-terrains = read_terrains()
-natures = read_natures()

@@ -8,7 +8,7 @@ from perlin_numpy import generate_fractal_noise_2d
 
 # from PIL import Image
 
-from .assets import terrains
+from .assets import read_terrains
 from .utils import (
     euclidean,
     linear,
@@ -85,7 +85,7 @@ class LevelGenerator:
         """
         Return terrain type, based on cutoff points imported from game assets.
         """
-        elevations = [(index, terrain.elevation) for index, terrain in terrains.items()]
+        elevations = [(index, terrain.elevation) for index, terrain in read_terrains().items()]
         elevations = sorted(elevations, key=lambda x: x[1])
         for index, cutoff in elevations:
             if elevation <= cutoff:

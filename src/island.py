@@ -4,7 +4,7 @@ Contains the Island class, which represents a contiguous landmass of Cells.
 
 import random
 
-from .assets import natures
+from .assets import read_natures
 from .drop import Drop
 from .enemy import Enemy
 
@@ -22,6 +22,7 @@ class Island:
         for cell in self.cells:
             cell.island = self
 
+        natures = read_natures()
         if self.index < len(natures):
             self.nature = natures[self.index]
             self.spawn_artifact()

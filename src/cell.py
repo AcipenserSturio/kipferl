@@ -2,7 +2,7 @@
 Contains the Cell class, which represents a single spacial unit of a level.
 """
 
-from .assets import terrains
+from .assets import read_terrains
 
 class Cell:
     """
@@ -18,7 +18,7 @@ class Cell:
         self.x = x
         self.character = None
         self.drop = None
-        self.terrain = terrains[index]
+        self.terrain = read_terrains()[index]
 
     def neighbor(self, direction):
         """
