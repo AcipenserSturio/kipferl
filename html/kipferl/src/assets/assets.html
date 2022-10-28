@@ -52,7 +52,15 @@ def read_natures():
     with open(&#34;assets/natures.json&#34;, encoding=&#34;utf8&#34;) as json_file:
         nature_qualities = json.load(json_file)
         return {index: Nature(**nature)
-                for index, nature in enumerate(nature_qualities)}</code></pre>
+                for index, nature in enumerate(nature_qualities)}
+
+def read_defines():
+    &#34;&#34;&#34;
+    Return list of defines loaded from game assets.
+    &#34;&#34;&#34;
+    with open(&#34;assets/defines.json&#34;, encoding=&#34;utf8&#34;) as json_file:
+        defines = json.load(json_file)
+        return defines</code></pre>
 </details>
 </section>
 <section>
@@ -62,6 +70,24 @@ def read_natures():
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="kipferl.src.assets.assets.read_defines"><code class="name flex">
+<span>def <span class="ident">read_defines</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return list of defines loaded from game assets.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_defines():
+    &#34;&#34;&#34;
+    Return list of defines loaded from game assets.
+    &#34;&#34;&#34;
+    with open(&#34;assets/defines.json&#34;, encoding=&#34;utf8&#34;) as json_file:
+        defines = json.load(json_file)
+        return defines</code></pre>
+</details>
+</dd>
 <dt id="kipferl.src.assets.assets.read_natures"><code class="name flex">
 <span>def <span class="ident">read_natures</span></span>(<span>)</span>
 </code></dt>
@@ -118,6 +144,7 @@ def read_natures():
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="kipferl.src.assets.assets.read_defines" href="#kipferl.src.assets.assets.read_defines">read_defines</a></code></li>
 <li><code><a title="kipferl.src.assets.assets.read_natures" href="#kipferl.src.assets.assets.read_natures">read_natures</a></code></li>
 <li><code><a title="kipferl.src.assets.assets.read_terrains" href="#kipferl.src.assets.assets.read_terrains">read_terrains</a></code></li>
 </ul>

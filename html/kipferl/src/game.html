@@ -35,6 +35,7 @@ and communicates game state with the curses display.
 &#34;&#34;&#34;
 
 import curses
+import random
 
 from .display.display import Display
 from .engine.level import Level
@@ -52,7 +53,7 @@ class Game:
         self.seed = seed
         self.display = None
         self.headless = False
-        self.level = Level(self, self.seed)
+        self.level = Level(self)
 
     def init_palette(self):
         &#34;&#34;&#34;
@@ -141,7 +142,7 @@ class Game:
         Start new Level and Display.
         &#34;&#34;&#34;
         self.quick_end_turn = True
-        self.level = Level(self, self.seed)
+        self.level = Level(self)
         if not self.headless:
             self.display = Display(self.level,
                                     curses.LINES-1, # pylint: disable=no-member
@@ -184,7 +185,7 @@ Processes turns.</p></div>
         self.seed = seed
         self.display = None
         self.headless = False
-        self.level = Level(self, self.seed)
+        self.level = Level(self)
 
     def init_palette(self):
         &#34;&#34;&#34;
@@ -273,7 +274,7 @@ Processes turns.</p></div>
         Start new Level and Display.
         &#34;&#34;&#34;
         self.quick_end_turn = True
-        self.level = Level(self, self.seed)
+        self.level = Level(self)
         if not self.headless:
             self.display = Display(self.level,
                                     curses.LINES-1, # pylint: disable=no-member
@@ -373,7 +374,7 @@ Start new Level and Display.</p></div>
     Start new Level and Display.
     &#34;&#34;&#34;
     self.quick_end_turn = True
-    self.level = Level(self, self.seed)
+    self.level = Level(self)
     if not self.headless:
         self.display = Display(self.level,
                                 curses.LINES-1, # pylint: disable=no-member

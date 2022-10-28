@@ -34,12 +34,14 @@ Contains the LevelGenerator class, which generates a 2d board
 from which a Level can be constructed.
 &#34;&#34;&#34;
 
+import random
+
 import numpy as np
 from perlin_numpy import generate_fractal_noise_2d
 
 # from PIL import Image
 
-from ..assets.assets import read_terrains
+from ..assets.assets import read_terrains, read_defines
 from .utils import (
     euclidean,
     linear,
@@ -54,6 +56,7 @@ class LevelGenerator:
     &#34;&#34;&#34;
     def __init__(self, seed):
         self.seed = seed
+        self.shape = (read_defines()[&#34;level_size_x&#34;], read_defines()[&#34;level_size_y&#34;])
 
     def generate(self):
         &#34;&#34;&#34;
@@ -72,7 +75,7 @@ class LevelGenerator:
         &#34;&#34;&#34;
         Generate a 2d numpy array of stacked Perlin noise.
         &#34;&#34;&#34;
-        shape = (256, 256)
+        shape = self.shape
         res = (8, 8)
         octaves = 5
         persistence = 0.5
@@ -166,6 +169,7 @@ Includes numpy functions which can be used together to generate terrain.</p></di
     &#34;&#34;&#34;
     def __init__(self, seed):
         self.seed = seed
+        self.shape = (read_defines()[&#34;level_size_x&#34;], read_defines()[&#34;level_size_y&#34;])
 
     def generate(self):
         &#34;&#34;&#34;
@@ -184,7 +188,7 @@ Includes numpy functions which can be used together to generate terrain.</p></di
         &#34;&#34;&#34;
         Generate a 2d numpy array of stacked Perlin noise.
         &#34;&#34;&#34;
-        shape = (256, 256)
+        shape = self.shape
         res = (8, 8)
         octaves = 5
         persistence = 0.5
@@ -364,7 +368,7 @@ using Perlin noise, with a fuzzy circular border.</p></div>
     &#34;&#34;&#34;
     Generate a 2d numpy array of stacked Perlin noise.
     &#34;&#34;&#34;
-    shape = (256, 256)
+    shape = self.shape
     res = (8, 8)
     octaves = 5
     persistence = 0.5

@@ -35,7 +35,7 @@ import random
 
 from .character import Character
 from .sound import play
-from ..assets.assets import read_natures
+from ..assets.assets import read_natures, read_defines
 
 class Player(Character):
     &#34;&#34;&#34;
@@ -47,12 +47,13 @@ class Player(Character):
         self.coins = 0
         self.artifacts = 0
         self.death_causes_game_over = True
-        self.damage_modifier = 5
+        self.damage_modifier = read_defines()[&#34;player_attack_modifier&#34;]
+        self.heal_modifier =read_defines()[&#34;player_heal_modifier&#34;]
 
     def heal(self):
         &#34;&#34;&#34;Add health, up to a maximum value.&#34;&#34;&#34;
         play(&#34;heal.wav&#34;)
-        self.health += 10
+        self.health += self.heal_modifier
         if self.health &gt; self.max_health:
             self.health = self.max_health
 
@@ -129,12 +130,13 @@ class Player(Character):
         self.coins = 0
         self.artifacts = 0
         self.death_causes_game_over = True
-        self.damage_modifier = 5
+        self.damage_modifier = read_defines()[&#34;player_attack_modifier&#34;]
+        self.heal_modifier =read_defines()[&#34;player_heal_modifier&#34;]
 
     def heal(self):
         &#34;&#34;&#34;Add health, up to a maximum value.&#34;&#34;&#34;
         play(&#34;heal.wav&#34;)
-        self.health += 10
+        self.health += self.heal_modifier
         if self.health &gt; self.max_health:
             self.health = self.max_health
 
@@ -246,7 +248,7 @@ class Player(Character):
 <pre><code class="python">def heal(self):
     &#34;&#34;&#34;Add health, up to a maximum value.&#34;&#34;&#34;
     play(&#34;heal.wav&#34;)
-    self.health += 10
+    self.health += self.heal_modifier
     if self.health &gt; self.max_health:
         self.health = self.max_health</code></pre>
 </details>
