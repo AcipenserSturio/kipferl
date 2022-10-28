@@ -3,8 +3,6 @@ Contains the LevelGenerator class, which generates a 2d board
 from which a Level can be constructed.
 """
 
-import random
-
 import numpy as np
 from perlin_numpy import generate_fractal_noise_2d
 

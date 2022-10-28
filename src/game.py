@@ -4,7 +4,6 @@ and communicates game state with the curses display.
 """
 
 import curses
-import random
 
 from .display.display import Display
 from .engine.level import Level
@@ -63,7 +62,7 @@ class Game:
         Do not use curses.
         """
         self.headless = True
-        self.level = Level(self, self.seed)
+        self.level = Level(self)
 
         input_sequence = list(map(ord, input_sequence))
 

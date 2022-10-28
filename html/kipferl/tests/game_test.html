@@ -33,7 +33,7 @@ from src.game import Game
 class GameTest(unittest.TestCase):
 
     def setUp(self):
-        self.game = Game(seed=0)
+        self.game = Game()
 
     def test_basic_generation(self):
         self.game.run_headless()
@@ -94,7 +94,7 @@ not have a method with the specified name.</p></div>
 <pre><code class="python">class GameTest(unittest.TestCase):
 
     def setUp(self):
-        self.game = Game(seed=0)
+        self.game = Game()
 
     def test_basic_generation(self):
         self.game.run_headless()
@@ -121,7 +121,7 @@ not have a method with the specified name.</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def setUp(self):
-    self.game = Game(seed=0)</code></pre>
+    self.game = Game()</code></pre>
 </details>
 </dd>
 <dt id="kipferl.tests.game_test.GameTest.test_basic_generation"><code class="name flex">
