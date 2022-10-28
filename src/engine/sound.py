@@ -7,11 +7,15 @@ from threading import Thread
 
 from playsound import playsound
 
+from ..assets.assets import read_defines
+
 def play(sound):
     """
     Play a WAV file asynchronously.
     """
     if not sound:
+        return
+    if not read_defines()["use_sound"]:
         return
     thread = Thread(target=_play, args=(sound,))
     thread.start()

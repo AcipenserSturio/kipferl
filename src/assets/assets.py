@@ -24,3 +24,11 @@ def read_natures():
         nature_qualities = json.load(json_file)
         return {index: Nature(**nature)
                 for index, nature in enumerate(nature_qualities)}
+
+def read_defines():
+    """
+    Return list of defines loaded from game assets.
+    """
+    with open("assets/defines.json", encoding="utf8") as json_file:
+        defines = json.load(json_file)
+        return defines

@@ -8,6 +8,7 @@ from .cell import Cell
 from .island import Island
 from ..level_gen.level_gen import LevelGenerator
 from .player import Player
+from ..assets.assets import read_defines
 
 class Level:
     """
@@ -18,14 +19,16 @@ class Level:
     # pylint: disable=too-many-instance-attributes
     # This class (obviously) holds many elements of a Level,
     # so the many instances are justified.
-    def __init__(self, game, seed=None):
+    def __init__(self, game):
         self.game = game
         self.board = []
         self.islands = []
         self.ticked = set()
         self.player = None
         self.enemies = set()
-        self.seed = random.randint(0, 100000) if not seed else seed
+
+        seed = read_defines()["seed"]
+        self.seed = random.randint(0, 100000) if seed == -1 else seed
 
         self.from_array(LevelGenerator(self.seed).generate())
         self.detect_islands()

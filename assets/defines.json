@@ -1,0 +1,8 @@
+{
+    "seed": 12345,
+    "use_sound": true,
+    "level_size_x": 256,
+    "level_size_y": 256,
+    "player_attack_modifier": 5,
+    "player_heal_modifier": 10
+}

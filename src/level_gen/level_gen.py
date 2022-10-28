@@ -3,12 +3,14 @@ Contains the LevelGenerator class, which generates a 2d board
 from which a Level can be constructed.
 """
 
+import random
+
 import numpy as np
 from perlin_numpy import generate_fractal_noise_2d
 
 # from PIL import Image
 
-from ..assets.assets import read_terrains
+from ..assets.assets import read_terrains, read_defines
 from .utils import (
     euclidean,
     linear,
@@ -23,6 +25,7 @@ class LevelGenerator:
     """
     def __init__(self, seed):
         self.seed = seed
+        self.shape = (read_defines()["level_size_x"], read_defines()["level_size_y"])
 
     def generate(self):
         """
@@ -41,7 +44,7 @@ class LevelGenerator:
         """
         Generate a 2d numpy array of stacked Perlin noise.
         """
-        shape = (256, 256)
+        shape = self.shape
         res = (8, 8)
         octaves = 5
         persistence = 0.5

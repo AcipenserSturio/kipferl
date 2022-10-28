@@ -4,6 +4,7 @@ and communicates game state with the curses display.
 """
 
 import curses
+import random
 
 from .display.display import Display
 from .engine.level import Level
@@ -21,7 +22,7 @@ class Game:
         self.seed = seed
         self.display = None
         self.headless = False
-        self.level = Level(self, self.seed)
+        self.level = Level(self)
 
     def init_palette(self):
         """
@@ -110,7 +111,7 @@ class Game:
         Start new Level and Display.
         """
         self.quick_end_turn = True
-        self.level = Level(self, self.seed)
+        self.level = Level(self)
         if not self.headless:
             self.display = Display(self.level,
                                     curses.LINES-1, # pylint: disable=no-member

@@ -6,7 +6,7 @@ import random
 
 from .character import Character
 from .sound import play
-from ..assets.assets import read_natures
+from ..assets.assets import read_natures, read_defines
 
 class Player(Character):
     """
@@ -18,12 +18,13 @@ class Player(Character):
         self.coins = 0
         self.artifacts = 0
         self.death_causes_game_over = True
-        self.damage_modifier = 5
+        self.damage_modifier = read_defines()["player_attack_modifier"]
+        self.heal_modifier =read_defines()["player_heal_modifier"]
 
     def heal(self):
         """Add health, up to a maximum value."""
         play("heal.wav")
-        self.health += 10
+        self.health += self.heal_modifier
         if self.health > self.max_health:
             self.health = self.max_health
 
