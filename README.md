@@ -38,6 +38,10 @@ A basic roguelike game written in Python and curses.
 
 [You can find documentation here.](https://acipensersturio.github.io/kipferl/html/kipferl/src)
 
+# Options
+
+You may customise your playing experience by editing defines in assets/defines.json.
+
 # License
 
 `AcipenserSturio/kipferl` is licensed under GPL-3.0, while acknowledging the copyright notice of MIT.

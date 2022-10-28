@@ -1,5 +1,5 @@
 {
-    "seed": 12345,
+    "seed": -1,
     "use_sound": true,
     "level_size_x": 256,
     "level_size_y": 256,
