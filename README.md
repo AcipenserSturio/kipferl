@@ -34,6 +34,10 @@ A basic roguelike game written in Python and curses.
   
     * Also, there is an opportunity to set an icon to `start-on-windows` file. For that purpose just place a game directory in your user directory or change it manually in file's properties (the icon is placed in `assets\img` directory).
 
+# Documentation
+
+[You can find documentation here.](https://acipensersturio.github.io/kipferl/html/kipferl/src)
+
 # License
 
 `AcipenserSturio/kipferl` is licensed under GPL-3.0, while acknowledging the copyright notice of MIT.
