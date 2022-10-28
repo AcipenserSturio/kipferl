@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>kipferl.src.character API documentation</title>
+<title>kipferl.src.engine.character API documentation</title>
 <meta name="description" content="Contains the Character class, which represents an entity which occupies one cell and can move." />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>kipferl.src.character</code></h1>
+<h1 class="title">Module <code>kipferl.src.engine.character</code></h1>
 </header>
 <section id="section-intro">
 <p>Contains the Character class, which represents an entity which occupies one cell and can move.</p>
@@ -127,7 +127,7 @@ class Character:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="kipferl.src.character.Character"><code class="flex name class">
+<dt id="kipferl.src.engine.character.Character"><code class="flex name class">
 <span>class <span class="ident">Character</span></span>
 <span>(</span><span>cell, char)</span>
 </code></dt>
@@ -222,12 +222,12 @@ May be controlled by the player.</p></div>
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="kipferl.src.enemy.Enemy" href="enemy.html#kipferl.src.enemy.Enemy">Enemy</a></li>
-<li><a title="kipferl.src.player.Player" href="player.html#kipferl.src.player.Player">Player</a></li>
+<li><a title="kipferl.src.engine.enemy.Enemy" href="enemy.html#kipferl.src.engine.enemy.Enemy">Enemy</a></li>
+<li><a title="kipferl.src.engine.player.Player" href="player.html#kipferl.src.engine.player.Player">Player</a></li>
 </ul>
 <h3>Instance variables</h3>
 <dl>
-<dt id="kipferl.src.character.Character.level"><code class="name">var <span class="ident">level</span></code></dt>
+<dt id="kipferl.src.engine.character.Character.level"><code class="name">var <span class="ident">level</span></code></dt>
 <dd>
 <div class="desc"><p>Character's Level is Cell's Level. For convenience.</p></div>
 <details class="source">
@@ -243,7 +243,7 @@ def level(self):
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="kipferl.src.character.Character.attack"><code class="name flex">
+<dt id="kipferl.src.engine.character.Character.attack"><code class="name flex">
 <span>def <span class="ident">attack</span></span>(<span>self, character)</span>
 </code></dt>
 <dd>
@@ -262,7 +262,7 @@ def level(self):
         character.die()</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.character.Character.can_walk_on"><code class="name flex">
+<dt id="kipferl.src.engine.character.Character.can_walk_on"><code class="name flex">
 <span>def <span class="ident">can_walk_on</span></span>(<span>self, cell)</span>
 </code></dt>
 <dd>
@@ -282,7 +282,7 @@ def level(self):
     return True</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.character.Character.die"><code class="name flex">
+<dt id="kipferl.src.engine.character.Character.die"><code class="name flex">
 <span>def <span class="ident">die</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -309,7 +309,7 @@ Trigger Game Over if player.</p></div>
     self.cell.tick()</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.character.Character.distance"><code class="name flex">
+<dt id="kipferl.src.engine.character.Character.distance"><code class="name flex">
 <span>def <span class="ident">distance</span></span>(<span>self, character, metric='euclidean')</span>
 </code></dt>
 <dd>
@@ -331,7 +331,7 @@ Support Euclidean and Manhattan metrics.</p></div>
             + (self.cell.y - character.cell.y) ** 2) ** 0.5</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.character.Character.move"><code class="name flex">
+<dt id="kipferl.src.engine.character.Character.move"><code class="name flex">
 <span>def <span class="ident">move</span></span>(<span>self, direction)</span>
 </code></dt>
 <dd>
@@ -372,20 +372,20 @@ Do not check for validity.</p></div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="kipferl.src" href="index.html">kipferl.src</a></code></li>
+<li><code><a title="kipferl.src.engine" href="index.html">kipferl.src.engine</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="kipferl.src.character.Character" href="#kipferl.src.character.Character">Character</a></code></h4>
+<h4><code><a title="kipferl.src.engine.character.Character" href="#kipferl.src.engine.character.Character">Character</a></code></h4>
 <ul class="two-column">
-<li><code><a title="kipferl.src.character.Character.attack" href="#kipferl.src.character.Character.attack">attack</a></code></li>
-<li><code><a title="kipferl.src.character.Character.can_walk_on" href="#kipferl.src.character.Character.can_walk_on">can_walk_on</a></code></li>
-<li><code><a title="kipferl.src.character.Character.die" href="#kipferl.src.character.Character.die">die</a></code></li>
-<li><code><a title="kipferl.src.character.Character.distance" href="#kipferl.src.character.Character.distance">distance</a></code></li>
-<li><code><a title="kipferl.src.character.Character.level" href="#kipferl.src.character.Character.level">level</a></code></li>
-<li><code><a title="kipferl.src.character.Character.move" href="#kipferl.src.character.Character.move">move</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.attack" href="#kipferl.src.engine.character.Character.attack">attack</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.can_walk_on" href="#kipferl.src.engine.character.Character.can_walk_on">can_walk_on</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.die" href="#kipferl.src.engine.character.Character.die">die</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.distance" href="#kipferl.src.engine.character.Character.distance">distance</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.level" href="#kipferl.src.engine.character.Character.level">level</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.move" href="#kipferl.src.engine.character.Character.move">move</a></code></li>
 </ul>
 </li>
 </ul>

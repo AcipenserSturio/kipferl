@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>kipferl.src.enemy API documentation</title>
+<title>kipferl.src.engine.enemy API documentation</title>
 <meta name="description" content="Contains the Enemy class, which represents a Character
 which tries to move every turn and attacks Player." />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -20,7 +20,7 @@ which tries to move every turn and attacks Player." />
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>kipferl.src.enemy</code></h1>
+<h1 class="title">Module <code>kipferl.src.engine.enemy</code></h1>
 </header>
 <section id="section-intro">
 <p>Contains the Enemy class, which represents a Character
@@ -114,7 +114,7 @@ class Enemy(Character):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="kipferl.src.enemy.Enemy"><code class="flex name class">
+<dt id="kipferl.src.engine.enemy.Enemy"><code class="flex name class">
 <span>class <span class="ident">Enemy</span></span>
 <span>(</span><span>nature, *args, **kwargs)</span>
 </code></dt>
@@ -192,11 +192,11 @@ Has "hunt" and "wander" ai behaviours.</p></div>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="kipferl.src.character.Character" href="character.html#kipferl.src.character.Character">Character</a></li>
+<li><a title="kipferl.src.engine.character.Character" href="character.html#kipferl.src.engine.character.Character">Character</a></li>
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="kipferl.src.enemy.Enemy.do_turn"><code class="name flex">
+<dt id="kipferl.src.engine.enemy.Enemy.do_turn"><code class="name flex">
 <span>def <span class="ident">do_turn</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -217,7 +217,7 @@ Has "hunt" and "wander" ai behaviours.</p></div>
     # enemy.heal()</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.enemy.Enemy.hunt"><code class="name flex">
+<dt id="kipferl.src.engine.enemy.Enemy.hunt"><code class="name flex">
 <span>def <span class="ident">hunt</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -253,7 +253,7 @@ Return direction of movement, or None if wandering.</p></div>
     return &#34;d&#34;</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.enemy.Enemy.walk"><code class="name flex">
+<dt id="kipferl.src.engine.enemy.Enemy.walk"><code class="name flex">
 <span>def <span class="ident">walk</span></span>(<span>self, direction, passively=False)</span>
 </code></dt>
 <dd>
@@ -276,7 +276,7 @@ Return direction of movement, or None if wandering.</p></div>
     self.move(direction)</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.enemy.Enemy.wander"><code class="name flex">
+<dt id="kipferl.src.engine.enemy.Enemy.wander"><code class="name flex">
 <span>def <span class="ident">wander</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -300,14 +300,14 @@ Avoid water.</p></div>
 </dl>
 <h3>Inherited members</h3>
 <ul class="hlist">
-<li><code><b><a title="kipferl.src.character.Character" href="character.html#kipferl.src.character.Character">Character</a></b></code>:
+<li><code><b><a title="kipferl.src.engine.character.Character" href="character.html#kipferl.src.engine.character.Character">Character</a></b></code>:
 <ul class="hlist">
-<li><code><a title="kipferl.src.character.Character.attack" href="character.html#kipferl.src.character.Character.attack">attack</a></code></li>
-<li><code><a title="kipferl.src.character.Character.can_walk_on" href="character.html#kipferl.src.character.Character.can_walk_on">can_walk_on</a></code></li>
-<li><code><a title="kipferl.src.character.Character.die" href="character.html#kipferl.src.character.Character.die">die</a></code></li>
-<li><code><a title="kipferl.src.character.Character.distance" href="character.html#kipferl.src.character.Character.distance">distance</a></code></li>
-<li><code><a title="kipferl.src.character.Character.level" href="character.html#kipferl.src.character.Character.level">level</a></code></li>
-<li><code><a title="kipferl.src.character.Character.move" href="character.html#kipferl.src.character.Character.move">move</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.attack" href="character.html#kipferl.src.engine.character.Character.attack">attack</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.can_walk_on" href="character.html#kipferl.src.engine.character.Character.can_walk_on">can_walk_on</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.die" href="character.html#kipferl.src.engine.character.Character.die">die</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.distance" href="character.html#kipferl.src.engine.character.Character.distance">distance</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.level" href="character.html#kipferl.src.engine.character.Character.level">level</a></code></li>
+<li><code><a title="kipferl.src.engine.character.Character.move" href="character.html#kipferl.src.engine.character.Character.move">move</a></code></li>
 </ul>
 </li>
 </ul>
@@ -323,18 +323,18 @@ Avoid water.</p></div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="kipferl.src" href="index.html">kipferl.src</a></code></li>
+<li><code><a title="kipferl.src.engine" href="index.html">kipferl.src.engine</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="kipferl.src.enemy.Enemy" href="#kipferl.src.enemy.Enemy">Enemy</a></code></h4>
+<h4><code><a title="kipferl.src.engine.enemy.Enemy" href="#kipferl.src.engine.enemy.Enemy">Enemy</a></code></h4>
 <ul class="">
-<li><code><a title="kipferl.src.enemy.Enemy.do_turn" href="#kipferl.src.enemy.Enemy.do_turn">do_turn</a></code></li>
-<li><code><a title="kipferl.src.enemy.Enemy.hunt" href="#kipferl.src.enemy.Enemy.hunt">hunt</a></code></li>
-<li><code><a title="kipferl.src.enemy.Enemy.walk" href="#kipferl.src.enemy.Enemy.walk">walk</a></code></li>
-<li><code><a title="kipferl.src.enemy.Enemy.wander" href="#kipferl.src.enemy.Enemy.wander">wander</a></code></li>
+<li><code><a title="kipferl.src.engine.enemy.Enemy.do_turn" href="#kipferl.src.engine.enemy.Enemy.do_turn">do_turn</a></code></li>
+<li><code><a title="kipferl.src.engine.enemy.Enemy.hunt" href="#kipferl.src.engine.enemy.Enemy.hunt">hunt</a></code></li>
+<li><code><a title="kipferl.src.engine.enemy.Enemy.walk" href="#kipferl.src.engine.enemy.Enemy.walk">walk</a></code></li>
+<li><code><a title="kipferl.src.engine.enemy.Enemy.wander" href="#kipferl.src.engine.enemy.Enemy.wander">wander</a></code></li>
 </ul>
 </li>
 </ul>

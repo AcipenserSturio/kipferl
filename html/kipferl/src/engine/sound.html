@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>kipferl.src.assets API documentation</title>
-<meta name="description" content="Holds text-based assets imported from the assets folder." />
+<title>kipferl.src.engine.sound API documentation</title>
+<meta name="description" content="Handles sound output." />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -19,40 +19,34 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>kipferl.src.assets</code></h1>
+<h1 class="title">Module <code>kipferl.src.engine.sound</code></h1>
 </header>
 <section id="section-intro">
-<p>Holds text-based assets imported from the assets folder.</p>
+<p>Handles sound output.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">&#34;&#34;&#34;
-Holds text-based assets imported from the assets folder.
+Handles sound output.
 &#34;&#34;&#34;
 
-import json
+from pathlib import Path
+from threading import Thread
 
-from .nature import Nature
-from .terrain import Terrain
+from playsound import playsound
 
-def read_terrains():
+def play(sound):
     &#34;&#34;&#34;
-    Return list of Terrains loaded from game assets.
+    Play a WAV file asynchronously.
     &#34;&#34;&#34;
-    with open(&#34;assets/terrains.json&#34;, encoding=&#34;utf8&#34;) as json_file:
-        terrain_qualities = json.load(json_file)
-        return {index: Terrain(**terrain)
-                for index, terrain in enumerate(terrain_qualities)}
+    if not sound:
+        return
+    thread = Thread(target=_play, args=(sound,))
+    thread.start()
 
-def read_natures():
-    &#34;&#34;&#34;
-    Return list of Natures loaded from game assets.
-    &#34;&#34;&#34;
-    with open(&#34;assets/natures.json&#34;, encoding=&#34;utf8&#34;) as json_file:
-        nature_qualities = json.load(json_file)
-        return {index: Nature(**nature)
-                for index, nature in enumerate(nature_qualities)}</code></pre>
+def _play(sound):
+    playsound(Path().cwd() / &#34;assets&#34; / &#34;sound&#34; / sound, block=True)</code></pre>
 </details>
 </section>
 <section>
@@ -62,42 +56,23 @@ def read_natures():
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="kipferl.src.assets.read_natures"><code class="name flex">
-<span>def <span class="ident">read_natures</span></span>(<span>)</span>
+<dt id="kipferl.src.engine.sound.play"><code class="name flex">
+<span>def <span class="ident">play</span></span>(<span>sound)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Return list of Natures loaded from game assets.</p></div>
+<div class="desc"><p>Play a WAV file asynchronously.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def read_natures():
+<pre><code class="python">def play(sound):
     &#34;&#34;&#34;
-    Return list of Natures loaded from game assets.
+    Play a WAV file asynchronously.
     &#34;&#34;&#34;
-    with open(&#34;assets/natures.json&#34;, encoding=&#34;utf8&#34;) as json_file:
-        nature_qualities = json.load(json_file)
-        return {index: Nature(**nature)
-                for index, nature in enumerate(nature_qualities)}</code></pre>
-</details>
-</dd>
-<dt id="kipferl.src.assets.read_terrains"><code class="name flex">
-<span>def <span class="ident">read_terrains</span></span>(<span>)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Return list of Terrains loaded from game assets.</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def read_terrains():
-    &#34;&#34;&#34;
-    Return list of Terrains loaded from game assets.
-    &#34;&#34;&#34;
-    with open(&#34;assets/terrains.json&#34;, encoding=&#34;utf8&#34;) as json_file:
-        terrain_qualities = json.load(json_file)
-        return {index: Terrain(**terrain)
-                for index, terrain in enumerate(terrain_qualities)}</code></pre>
+    if not sound:
+        return
+    thread = Thread(target=_play, args=(sound,))
+    thread.start()</code></pre>
 </details>
 </dd>
 </dl>
@@ -113,13 +88,12 @@ def read_natures():
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="kipferl.src" href="index.html">kipferl.src</a></code></li>
+<li><code><a title="kipferl.src.engine" href="index.html">kipferl.src.engine</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="kipferl.src.assets.read_natures" href="#kipferl.src.assets.read_natures">read_natures</a></code></li>
-<li><code><a title="kipferl.src.assets.read_terrains" href="#kipferl.src.assets.read_terrains">read_terrains</a></code></li>
+<li><code><a title="kipferl.src.engine.sound.play" href="#kipferl.src.engine.sound.play">play</a></code></li>
 </ul>
 </li>
 </ul>

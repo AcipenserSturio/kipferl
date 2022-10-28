@@ -1,6 +1,6 @@
 import unittest
 
-from src.level import Level
+from src.engine.level import Level
 
 class LevelTest(unittest.TestCase):
 

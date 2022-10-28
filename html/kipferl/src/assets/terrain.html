@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>kipferl.tests.level_test API documentation</title>
-<meta name="description" content="" />
+<title>kipferl.src.assets.terrain API documentation</title>
+<meta name="description" content="Contains the Terrain class, which represents immutable features present in a Cell." />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -19,28 +19,32 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>kipferl.tests.level_test</code></h1>
+<h1 class="title">Module <code>kipferl.src.assets.terrain</code></h1>
 </header>
 <section id="section-intro">
+<p>Contains the Terrain class, which represents immutable features present in a Cell.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import unittest
+<pre><code class="python">&#34;&#34;&#34;
+Contains the Terrain class, which represents immutable features present in a Cell.
+&#34;&#34;&#34;
 
-from src.engine.level import Level
+from dataclasses import dataclass
 
-class LevelTest(unittest.TestCase):
-
-    def setUp(self):
-        self.level = Level(self)
-
-    def test_basic_generation(self):
-        assert self.level.board is not None
-
-    def test_island_detection(self):
-        assert self.level.islands is not None
-        assert len(self.level.islands) &gt; 0</code></pre>
+@dataclass
+class Terrain:
+    &#34;&#34;&#34;
+    Immutable features present in a Cell.
+    &#34;&#34;&#34;
+    name: str
+    char: str
+    color: int
+    land: bool
+    elevation: float
+    walkable: bool
+    sound: str</code></pre>
 </details>
 </section>
 <section>
@@ -52,100 +56,58 @@ class LevelTest(unittest.TestCase):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="kipferl.tests.level_test.LevelTest"><code class="flex name class">
-<span>class <span class="ident">LevelTest</span></span>
-<span>(</span><span>methodName='runTest')</span>
+<dt id="kipferl.src.assets.terrain.Terrain"><code class="flex name class">
+<span>class <span class="ident">Terrain</span></span>
+<span>(</span><span>name: str, char: str, color: int, land: bool, elevation: float, walkable: bool, sound: str)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>A class whose instances are single test cases.</p>
-<p>By default, the test code itself should be placed in a method named
-'runTest'.</p>
-<p>If the fixture may be used for many test cases, create as
-many test methods as are needed. When instantiating such a TestCase
-subclass, specify in the constructor arguments the name of the test method
-that the instance is to execute.</p>
-<p>Test authors should subclass TestCase for their own tests. Construction
-and deconstruction of the test's environment ('fixture') can be
-implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
-<p>If it is necessary to override the <strong>init</strong> method, the base class
-<strong>init</strong> method must always be called. It is important that subclasses
-should not change the signature of their <strong>init</strong> method, since instances
-of the classes are instantiated automatically by parts of the framework
-in order to be run.</p>
-<p>When subclassing TestCase, you can set these attributes:
-* failureException: determines which exception will be raised when
-the instance's assertion methods fail; test methods raising this
-exception will be deemed to have 'failed' rather than 'errored'.
-* longMessage: determines whether long messages (including repr of
-objects used in assert methods) will be printed on failure in <em>addition</em>
-to any explicit message passed.
-* maxDiff: sets the maximum length of a diff in failure messages
-by assert methods using difflib. It is looked up as an instance
-attribute so can be configured by individual tests if required.</p>
-<p>Create an instance of the class that will use the named test
-method when executed. Raises a ValueError if the instance does
-not have a method with the specified name.</p></div>
+<div class="desc"><p>Immutable features present in a Cell.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class LevelTest(unittest.TestCase):
-
-    def setUp(self):
-        self.level = Level(self)
-
-    def test_basic_generation(self):
-        assert self.level.board is not None
-
-    def test_island_detection(self):
-        assert self.level.islands is not None
-        assert len(self.level.islands) &gt; 0</code></pre>
+<pre><code class="python">@dataclass
+class Terrain:
+    &#34;&#34;&#34;
+    Immutable features present in a Cell.
+    &#34;&#34;&#34;
+    name: str
+    char: str
+    color: int
+    land: bool
+    elevation: float
+    walkable: bool
+    sound: str</code></pre>
 </details>
-<h3>Ancestors</h3>
-<ul class="hlist">
-<li>unittest.case.TestCase</li>
-</ul>
-<h3>Methods</h3>
+<h3>Class variables</h3>
 <dl>
-<dt id="kipferl.tests.level_test.LevelTest.setUp"><code class="name flex">
-<span>def <span class="ident">setUp</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Hook method for setting up the test fixture before exercising it.</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def setUp(self):
-    self.level = Level(self)</code></pre>
-</details>
-</dd>
-<dt id="kipferl.tests.level_test.LevelTest.test_basic_generation"><code class="name flex">
-<span>def <span class="ident">test_basic_generation</span></span>(<span>self)</span>
-</code></dt>
+<dt id="kipferl.src.assets.terrain.Terrain.char"><code class="name">var <span class="ident">char</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def test_basic_generation(self):
-    assert self.level.board is not None</code></pre>
-</details>
 </dd>
-<dt id="kipferl.tests.level_test.LevelTest.test_island_detection"><code class="name flex">
-<span>def <span class="ident">test_island_detection</span></span>(<span>self)</span>
-</code></dt>
+<dt id="kipferl.src.assets.terrain.Terrain.color"><code class="name">var <span class="ident">color</span> : int</code></dt>
 <dd>
 <div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def test_island_detection(self):
-    assert self.level.islands is not None
-    assert len(self.level.islands) &gt; 0</code></pre>
-</details>
+</dd>
+<dt id="kipferl.src.assets.terrain.Terrain.elevation"><code class="name">var <span class="ident">elevation</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="kipferl.src.assets.terrain.Terrain.land"><code class="name">var <span class="ident">land</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="kipferl.src.assets.terrain.Terrain.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="kipferl.src.assets.terrain.Terrain.sound"><code class="name">var <span class="ident">sound</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="kipferl.src.assets.terrain.Terrain.walkable"><code class="name">var <span class="ident">walkable</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
 </dd>
 </dl>
 </dd>
@@ -160,17 +122,21 @@ not have a method with the specified name.</p></div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="kipferl.tests" href="index.html">kipferl.tests</a></code></li>
+<li><code><a title="kipferl.src.assets" href="index.html">kipferl.src.assets</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="kipferl.tests.level_test.LevelTest" href="#kipferl.tests.level_test.LevelTest">LevelTest</a></code></h4>
-<ul class="">
-<li><code><a title="kipferl.tests.level_test.LevelTest.setUp" href="#kipferl.tests.level_test.LevelTest.setUp">setUp</a></code></li>
-<li><code><a title="kipferl.tests.level_test.LevelTest.test_basic_generation" href="#kipferl.tests.level_test.LevelTest.test_basic_generation">test_basic_generation</a></code></li>
-<li><code><a title="kipferl.tests.level_test.LevelTest.test_island_detection" href="#kipferl.tests.level_test.LevelTest.test_island_detection">test_island_detection</a></code></li>
+<h4><code><a title="kipferl.src.assets.terrain.Terrain" href="#kipferl.src.assets.terrain.Terrain">Terrain</a></code></h4>
+<ul class="two-column">
+<li><code><a title="kipferl.src.assets.terrain.Terrain.char" href="#kipferl.src.assets.terrain.Terrain.char">char</a></code></li>
+<li><code><a title="kipferl.src.assets.terrain.Terrain.color" href="#kipferl.src.assets.terrain.Terrain.color">color</a></code></li>
+<li><code><a title="kipferl.src.assets.terrain.Terrain.elevation" href="#kipferl.src.assets.terrain.Terrain.elevation">elevation</a></code></li>
+<li><code><a title="kipferl.src.assets.terrain.Terrain.land" href="#kipferl.src.assets.terrain.Terrain.land">land</a></code></li>
+<li><code><a title="kipferl.src.assets.terrain.Terrain.name" href="#kipferl.src.assets.terrain.Terrain.name">name</a></code></li>
+<li><code><a title="kipferl.src.assets.terrain.Terrain.sound" href="#kipferl.src.assets.terrain.Terrain.sound">sound</a></code></li>
+<li><code><a title="kipferl.src.assets.terrain.Terrain.walkable" href="#kipferl.src.assets.terrain.Terrain.walkable">walkable</a></code></li>
 </ul>
 </li>
 </ul>

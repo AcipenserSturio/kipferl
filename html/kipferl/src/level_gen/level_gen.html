@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>kipferl.src.level_gen API documentation</title>
+<title>kipferl.src.level_gen.level_gen API documentation</title>
 <meta name="description" content="Contains the LevelGenerator class, which generates a 2d board
 from which a Level can be constructed." />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -20,7 +20,7 @@ from which a Level can be constructed." />
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>kipferl.src.level_gen</code></h1>
+<h1 class="title">Module <code>kipferl.src.level_gen.level_gen</code></h1>
 </header>
 <section id="section-intro">
 <p>Contains the LevelGenerator class, which generates a 2d board
@@ -39,7 +39,7 @@ from perlin_numpy import generate_fractal_noise_2d
 
 # from PIL import Image
 
-from .assets import read_terrains
+from ..assets.assets import read_terrains
 from .utils import (
     euclidean,
     linear,
@@ -148,7 +148,7 @@ class LevelGenerator:
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="kipferl.src.level_gen.LevelGenerator"><code class="flex name class">
+<dt id="kipferl.src.level_gen.level_gen.LevelGenerator"><code class="flex name class">
 <span>class <span class="ident">LevelGenerator</span></span>
 <span>(</span><span>seed)</span>
 </code></dt>
@@ -252,7 +252,7 @@ Includes numpy functions which can be used together to generate terrain.</p></di
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="kipferl.src.level_gen.LevelGenerator.add_border"><code class="name flex">
+<dt id="kipferl.src.level_gen.level_gen.LevelGenerator.add_border"><code class="name flex">
 <span>def <span class="ident">add_border</span></span>(<span>self, world)</span>
 </code></dt>
 <dd>
@@ -280,7 +280,7 @@ Includes numpy functions which can be used together to generate terrain.</p></di
     return perlin_in_sphere</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.level_gen.LevelGenerator.add_color"><code class="name flex">
+<dt id="kipferl.src.level_gen.level_gen.LevelGenerator.add_color"><code class="name flex">
 <span>def <span class="ident">add_color</span></span>(<span>self, world)</span>
 </code></dt>
 <dd>
@@ -305,7 +305,7 @@ using cutoff points imported from game assets.</p></div>
     return color_world.astype(np.uint8)</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.level_gen.LevelGenerator.generate"><code class="name flex">
+<dt id="kipferl.src.level_gen.level_gen.LevelGenerator.generate"><code class="name flex">
 <span>def <span class="ident">generate</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -329,7 +329,7 @@ using Perlin noise, with a fuzzy circular border.</p></div>
     return color_world</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.level_gen.LevelGenerator.index_by_elevation"><code class="name flex">
+<dt id="kipferl.src.level_gen.level_gen.LevelGenerator.index_by_elevation"><code class="name flex">
 <span>def <span class="ident">index_by_elevation</span></span>(<span>self, elevation)</span>
 </code></dt>
 <dd>
@@ -351,7 +351,7 @@ using Perlin noise, with a fuzzy circular border.</p></div>
     return 0</code></pre>
 </details>
 </dd>
-<dt id="kipferl.src.level_gen.LevelGenerator.perlin_noise"><code class="name flex">
+<dt id="kipferl.src.level_gen.level_gen.LevelGenerator.perlin_noise"><code class="name flex">
 <span>def <span class="ident">perlin_noise</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -400,19 +400,19 @@ using Perlin noise, with a fuzzy circular border.</p></div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="kipferl.src" href="index.html">kipferl.src</a></code></li>
+<li><code><a title="kipferl.src.level_gen" href="index.html">kipferl.src.level_gen</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="kipferl.src.level_gen.LevelGenerator" href="#kipferl.src.level_gen.LevelGenerator">LevelGenerator</a></code></h4>
+<h4><code><a title="kipferl.src.level_gen.level_gen.LevelGenerator" href="#kipferl.src.level_gen.level_gen.LevelGenerator">LevelGenerator</a></code></h4>
 <ul class="">
-<li><code><a title="kipferl.src.level_gen.LevelGenerator.add_border" href="#kipferl.src.level_gen.LevelGenerator.add_border">add_border</a></code></li>
-<li><code><a title="kipferl.src.level_gen.LevelGenerator.add_color" href="#kipferl.src.level_gen.LevelGenerator.add_color">add_color</a></code></li>
-<li><code><a title="kipferl.src.level_gen.LevelGenerator.generate" href="#kipferl.src.level_gen.LevelGenerator.generate">generate</a></code></li>
-<li><code><a title="kipferl.src.level_gen.LevelGenerator.index_by_elevation" href="#kipferl.src.level_gen.LevelGenerator.index_by_elevation">index_by_elevation</a></code></li>
-<li><code><a title="kipferl.src.level_gen.LevelGenerator.perlin_noise" href="#kipferl.src.level_gen.LevelGenerator.perlin_noise">perlin_noise</a></code></li>
+<li><code><a title="kipferl.src.level_gen.level_gen.LevelGenerator.add_border" href="#kipferl.src.level_gen.level_gen.LevelGenerator.add_border">add_border</a></code></li>
+<li><code><a title="kipferl.src.level_gen.level_gen.LevelGenerator.add_color" href="#kipferl.src.level_gen.level_gen.LevelGenerator.add_color">add_color</a></code></li>
+<li><code><a title="kipferl.src.level_gen.level_gen.LevelGenerator.generate" href="#kipferl.src.level_gen.level_gen.LevelGenerator.generate">generate</a></code></li>
+<li><code><a title="kipferl.src.level_gen.level_gen.LevelGenerator.index_by_elevation" href="#kipferl.src.level_gen.level_gen.LevelGenerator.index_by_elevation">index_by_elevation</a></code></li>
+<li><code><a title="kipferl.src.level_gen.level_gen.LevelGenerator.perlin_noise" href="#kipferl.src.level_gen.level_gen.LevelGenerator.perlin_noise">perlin_noise</a></code></li>
 </ul>
 </li>
 </ul>

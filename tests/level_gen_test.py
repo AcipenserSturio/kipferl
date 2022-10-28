@@ -2,7 +2,7 @@ import unittest
 
 import numpy
 
-from src.level_gen import LevelGenerator
+from src.level_gen.level_gen import LevelGenerator
 
 class LevelGeneratorTest(unittest.TestCase):
 

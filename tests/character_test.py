@@ -1,9 +1,9 @@
 import unittest
 
 from src.game import Game
-from src.enemy import Enemy
-from src.character import Character
-from src.player import Player
+from src.engine.enemy import Enemy
+from src.engine.character import Character
+from src.engine.player import Player
 
 
 class CharacterTest(unittest.TestCase):
