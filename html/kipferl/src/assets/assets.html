@@ -32,10 +32,13 @@ Holds text-based assets imported from the assets folder.
 &#34;&#34;&#34;
 
 import json
+from functools import cache
 
 from .nature import Nature
 from .terrain import Terrain
 
+
+@cache
 def read_terrains():
     &#34;&#34;&#34;
     Return list of Terrains loaded from game assets.
@@ -45,6 +48,8 @@ def read_terrains():
         return {index: Terrain(**terrain)
                 for index, terrain in enumerate(terrain_qualities)}
 
+
+@cache
 def read_natures():
     &#34;&#34;&#34;
     Return list of Natures loaded from game assets.
@@ -54,6 +59,7 @@ def read_natures():
         return {index: Nature(**nature)
                 for index, nature in enumerate(nature_qualities)}
 
+@cache
 def read_defines():
     &#34;&#34;&#34;
     Return list of defines loaded from game assets.
@@ -79,7 +85,8 @@ def read_defines():
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def read_defines():
+<pre><code class="python">@cache
+def read_defines():
     &#34;&#34;&#34;
     Return list of defines loaded from game assets.
     &#34;&#34;&#34;
@@ -97,7 +104,8 @@ def read_defines():
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def read_natures():
+<pre><code class="python">@cache
+def read_natures():
     &#34;&#34;&#34;
     Return list of Natures loaded from game assets.
     &#34;&#34;&#34;
@@ -116,7 +124,8 @@ def read_defines():
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def read_terrains():
+<pre><code class="python">@cache
+def read_terrains():
     &#34;&#34;&#34;
     Return list of Terrains loaded from game assets.
     &#34;&#34;&#34;

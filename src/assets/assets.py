@@ -3,10 +3,13 @@ Holds text-based assets imported from the assets folder.
 """
 
 import json
+from functools import cache
 
 from .nature import Nature
 from .terrain import Terrain
 
+
+@cache
 def read_terrains():
     """
     Return list of Terrains loaded from game assets.
@@ -16,6 +19,8 @@ def read_terrains():
         return {index: Terrain(**terrain)
                 for index, terrain in enumerate(terrain_qualities)}
 
+
+@cache
 def read_natures():
     """
     Return list of Natures loaded from game assets.
@@ -25,6 +30,7 @@ def read_natures():
         return {index: Nature(**nature)
                 for index, nature in enumerate(nature_qualities)}
 
+@cache
 def read_defines():
     """
     Return list of defines loaded from game assets.
